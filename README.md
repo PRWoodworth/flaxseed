@@ -1,0 +1,1 @@
+C# project to translate text into a series of colors. 
