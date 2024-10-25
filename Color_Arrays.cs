@@ -1,6 +1,6 @@
 namespace flaxseed { 
     public class Color_Arrays{
-        private Dictionary<Char, String[]> Letter_Colors = new Dictionary<Char, string[]>();
+        private Dictionary<Char, List<String>> Letter_Colors = new Dictionary<Char, List<String>>();
 
             /*
             gr = green
@@ -20,7 +20,7 @@ namespace flaxseed {
             // TODO: create codec for punctuation
             */
 
-        public Dictionary<Char, String[]> Init_Letter_Colors_Dict(){
+        public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
             Letter_Colors.Add('A', ["gr", " " ,"gr"]);
             Letter_Colors.Add('B', ["ye", " " ,"ye"]);
             Letter_Colors.Add('C', ["pu", " " ,"pu"]);
@@ -51,7 +51,7 @@ namespace flaxseed {
             return Letter_Colors;
         }
 
-        public Dictionary<Char, String[]> get_letter_colors(){
+        public Dictionary<Char, List<String>> get_letter_colors(){
             return Letter_Colors;
         }
     }
