@@ -1,6 +1,6 @@
 namespace flaxseed { 
     public class Color_Arrays{
-        public Dictionary<String, String[]> Letter_Colors = new Dictionary<string, string[]>();
+        private Dictionary<Char, String[]> Letter_Colors = new Dictionary<Char, string[]>();
 
             /*
             gr = green
@@ -20,34 +20,38 @@ namespace flaxseed {
             // TODO: create codec for punctuation
             */
 
-        public Dictionary<String, String[]> Init_Letter_Dict(){
-            Letter_Colors.Add("A", ["gr", " " ,"gr"]);
-            Letter_Colors.Add("B", ["ye", " " ,"ye"]);
-            Letter_Colors.Add("C", ["pu", " " ,"pu"]);
-            Letter_Colors.Add("D", ["or", " " ,"or"]);
-            Letter_Colors.Add("E", ["cy", " " ,"cy"]);
-            Letter_Colors.Add("F", ["pu", " " ,"pu"]);
-            Letter_Colors.Add("G", ["ma", " " ,"ma"]);
-            Letter_Colors.Add("H", ["re", " " ,"re"]);
-            Letter_Colors.Add("I", ["bl", " " ,"bl"]);
-            Letter_Colors.Add("J", ["gr", "|" ,"wh"]);
-            Letter_Colors.Add("K", ["gr", "|" ,"gr"]);
-            Letter_Colors.Add("L", ["gr", "|" ,"ye"]);
-            Letter_Colors.Add("M", ["gr", "|" ,"pu"]);
-            Letter_Colors.Add("N", ["gr", "|" ,"or"]);
-            Letter_Colors.Add("O", ["gr", "|" ,"cy"]);
-            Letter_Colors.Add("P", ["gr", "|" ,"pu"]);
-            Letter_Colors.Add("Q", ["gr", "|" ,"ma"]);
-            Letter_Colors.Add("R", ["gr", "|" ,"re"]);
-            Letter_Colors.Add("S", ["gr", "|" ,"bl"]);
-            Letter_Colors.Add("T", ["ye", "|" ,"wh"]);
-            Letter_Colors.Add("U", ["ye", "|" ,"gr"]);
-            Letter_Colors.Add("V", ["ye", "|" ,"ye"]);
-            Letter_Colors.Add("W", ["ye", "|" ,"pu"]);
-            Letter_Colors.Add("X", ["ye", "|" ,"or"]);
-            Letter_Colors.Add("Y", ["ye", "|" ,"cy"]);
-            Letter_Colors.Add("Z", ["ye", "|" ,"pu"]);
+        public Dictionary<Char, String[]> Init_Letter_Colors_Dict(){
+            Letter_Colors.Add('A', ["gr", " " ,"gr"]);
+            Letter_Colors.Add('B', ["ye", " " ,"ye"]);
+            Letter_Colors.Add('C', ["pu", " " ,"pu"]);
+            Letter_Colors.Add('D', ["or", " " ,"or"]);
+            Letter_Colors.Add('E', ["cy", " " ,"cy"]);
+            Letter_Colors.Add('F', ["pu", " " ,"pu"]);
+            Letter_Colors.Add('G', ["ma", " " ,"ma"]);
+            Letter_Colors.Add('H', ["re", " " ,"re"]);
+            Letter_Colors.Add('I', ["bl", " " ,"bl"]);
+            Letter_Colors.Add('J', ["gr", "|" ,"wh"]);
+            Letter_Colors.Add('K', ["gr", "|" ,"gr"]);
+            Letter_Colors.Add('L', ["gr", "|" ,"ye"]);
+            Letter_Colors.Add('M', ["gr", "|" ,"pu"]);
+            Letter_Colors.Add('N', ["gr", "|" ,"or"]);
+            Letter_Colors.Add('O', ["gr", "|" ,"cy"]);
+            Letter_Colors.Add('P', ["gr", "|" ,"pu"]);
+            Letter_Colors.Add('Q', ["gr", "|" ,"ma"]);
+            Letter_Colors.Add('R', ["gr", "|" ,"re"]);
+            Letter_Colors.Add('S', ["gr", "|" ,"bl"]);
+            Letter_Colors.Add('T', ["ye", "|" ,"wh"]);
+            Letter_Colors.Add('U', ["ye", "|" ,"gr"]);
+            Letter_Colors.Add('V', ["ye", "|" ,"ye"]);
+            Letter_Colors.Add('W', ["ye", "|" ,"pu"]);
+            Letter_Colors.Add('X', ["ye", "|" ,"or"]);
+            Letter_Colors.Add('Y', ["ye", "|" ,"cy"]);
+            Letter_Colors.Add('Z', ["ye", "|" ,"pu"]);
 
+            return Letter_Colors;
+        }
+
+        public Dictionary<Char, String[]> get_letter_colors(){
             return Letter_Colors;
         }
     }
