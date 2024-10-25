@@ -21,15 +21,15 @@ namespace flaxseed {
             */
 
         public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
-            Letter_Colors.Add('A', ["gr", " " ,"gr"]);
-            Letter_Colors.Add('B', ["ye", " " ,"ye"]);
-            Letter_Colors.Add('C', ["pu", " " ,"pu"]);
-            Letter_Colors.Add('D', ["or", " " ,"or"]);
-            Letter_Colors.Add('E', ["cy", " " ,"cy"]);
-            Letter_Colors.Add('F', ["pu", " " ,"pu"]);
-            Letter_Colors.Add('G', ["ma", " " ,"ma"]);
-            Letter_Colors.Add('H', ["re", " " ,"re"]);
-            Letter_Colors.Add('I', ["bl", " " ,"bl"]);
+            Letter_Colors.Add('A', ["gr", "" ,"gr"]);
+            Letter_Colors.Add('B', ["ye", "" ,"ye"]);
+            Letter_Colors.Add('C', ["pu", "" ,"pu"]);
+            Letter_Colors.Add('D', ["or", "" ,"or"]);
+            Letter_Colors.Add('E', ["cy", "" ,"cy"]);
+            Letter_Colors.Add('F', ["pu", "" ,"pu"]);
+            Letter_Colors.Add('G', ["ma", "" ,"ma"]);
+            Letter_Colors.Add('H', ["re", "" ,"re"]);
+            Letter_Colors.Add('I', ["bl", "" ,"bl"]);
             Letter_Colors.Add('J', ["gr", "|" ,"wh"]);
             Letter_Colors.Add('K', ["gr", "|" ,"gr"]);
             Letter_Colors.Add('L', ["gr", "|" ,"ye"]);
