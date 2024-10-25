@@ -1,49 +1,54 @@
-public static class Color_Arrays{
+namespace flaxseed { 
+    public class Color_Arrays{
+        public Dictionary<String, String[]> Letter_Colors = new Dictionary<string, string[]>();
 
-    /*
-    g = green
-    y = yellow
-    p = pink
-    o = orange
-    c = cyan
-    p = pink
-    m = magenta (dark purple)
-    r = red
-    b = blue
-    w = white
-    | = thin white vertical bar separating the two colors
+            /*
+            gr = green
+            ye = yellow
+            pu = pink
+            or = orange
+            cy = cyan
+            pi = pink
+            ma = magenta (dark purple)
+            re = red
+            bl = blue
+            wh = white
+            | = thin white vertical bar separating the two colors
 
-    spaces = grey octagons
-    all punctuation = blank space
-    // TODO: create codec for punctuation
-    */
+            spaces = grey octagons
+            all punctuation = blank space
+            // TODO: create codec for punctuation
+            */
 
-    public static readonly Char[] A = ['g', ' ' ,'g'];
-    public static readonly Char[] B = ['y', ' ' ,'y'];
-    public static readonly Char[] C = ['p', ' ' ,'p'];
-    public static readonly Char[] D = ['o', ' ' ,'o'];
-    public static readonly Char[] E = ['c', ' ' ,'c'];
-    public static readonly Char[] F = ['p', ' ' ,'p'];
-    public static readonly Char[] G = ['m', ' ' ,'m'];
-    public static readonly Char[] H = ['r', ' ' ,'r'];
-    public static readonly Char[] I = ['b', ' ' ,'b'];
-    public static readonly Char[] J = ['g', '|' ,'w'];
-    public static readonly Char[] K = ['g', '|' ,'g'];
-    public static readonly Char[] L = ['g', '|' ,'y'];
-    public static readonly Char[] M = ['g', '|' ,'p'];
-    public static readonly Char[] N = ['g', '|' ,'o'];
-    public static readonly Char[] O = ['g', '|' ,'c'];
-    public static readonly Char[] P = ['g', '|' ,'p'];
-    public static readonly Char[] Q = ['g', '|' ,'m'];
-    public static readonly Char[] R = ['g', '|' ,'r'];
-    public static readonly Char[] S = ['g', '|' ,'b'];
-    public static readonly Char[] T = ['y', '|' ,'w'];
-    public static readonly Char[] U = ['y', '|' ,'g'];
-    public static readonly Char[] V = ['y', '|' ,'y'];
-    public static readonly Char[] W = ['y', '|' ,'p'];
-    public static readonly Char[] X = ['y', '|' ,'o'];
-    public static readonly Char[] Y = ['y', '|' ,'c'];
-    public static readonly Char[] Z = ['y', '|' ,'p'];
+        public Dictionary<String, String[]> Init_Letter_Dict(){
+            Letter_Colors.Add("A", ["gr", " " ,"gr"]);
+            Letter_Colors.Add("B", ["ye", " " ,"ye"]);
+            Letter_Colors.Add("C", ["pu", " " ,"pu"]);
+            Letter_Colors.Add("D", ["or", " " ,"or"]);
+            Letter_Colors.Add("E", ["cy", " " ,"cy"]);
+            Letter_Colors.Add("F", ["pu", " " ,"pu"]);
+            Letter_Colors.Add("G", ["ma", " " ,"ma"]);
+            Letter_Colors.Add("H", ["re", " " ,"re"]);
+            Letter_Colors.Add("I", ["bl", " " ,"bl"]);
+            Letter_Colors.Add("J", ["gr", "|" ,"wh"]);
+            Letter_Colors.Add("K", ["gr", "|" ,"gr"]);
+            Letter_Colors.Add("L", ["gr", "|" ,"ye"]);
+            Letter_Colors.Add("M", ["gr", "|" ,"pu"]);
+            Letter_Colors.Add("N", ["gr", "|" ,"or"]);
+            Letter_Colors.Add("O", ["gr", "|" ,"cy"]);
+            Letter_Colors.Add("P", ["gr", "|" ,"pu"]);
+            Letter_Colors.Add("Q", ["gr", "|" ,"ma"]);
+            Letter_Colors.Add("R", ["gr", "|" ,"re"]);
+            Letter_Colors.Add("S", ["gr", "|" ,"bl"]);
+            Letter_Colors.Add("T", ["ye", "|" ,"wh"]);
+            Letter_Colors.Add("U", ["ye", "|" ,"gr"]);
+            Letter_Colors.Add("V", ["ye", "|" ,"ye"]);
+            Letter_Colors.Add("W", ["ye", "|" ,"pu"]);
+            Letter_Colors.Add("X", ["ye", "|" ,"or"]);
+            Letter_Colors.Add("Y", ["ye", "|" ,"cy"]);
+            Letter_Colors.Add("Z", ["ye", "|" ,"pu"]);
 
-
-} 
+            return Letter_Colors;
+        }
+    }
+}
