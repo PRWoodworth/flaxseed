@@ -17,32 +17,32 @@ public static class Color_Arrays{
     all other punctuation = blank space
     */
 
-    public static Char[] A = ['g', ' ' ,'g'];
-    public static Char[] B = ['y', ' ' ,'y'];
-    public static Char[] C = ['p', ' ' ,'p'];
-    public static Char[] D = ['o', ' ' ,'o'];
-    public static Char[] E = ['c', ' ' ,'c'];
-    public static Char[] F = ['p', ' ' ,'p'];
-    public static Char[] G = ['m', ' ' ,'m'];
-    public static Char[] H = ['r', ' ' ,'r'];
-    public static Char[] I = ['b', ' ' ,'b'];
-    public static Char[] J = ['g', '|' ,'w'];
-    public static Char[] K = ['g', '|' ,'g'];
-    public static Char[] L = ['g', '|' ,'y'];
-    public static Char[] M = ['g', '|' ,'p'];
-    public static Char[] N = ['g', '|' ,'o'];
-    public static Char[] O = ['g', '|' ,'c'];
-    public static Char[] P = ['g', '|' ,'p'];
-    public static Char[] Q = ['g', '|' ,'m'];
-    public static Char[] R = ['g', '|' ,'r'];
-    public static Char[] S = ['g', '|' ,'b'];
-    public static Char[] T = ['y', '|' ,'w'];
-    public static Char[] U = ['y', '|' ,'g'];
-    public static Char[] V = ['y', '|' ,'y'];
-    public static Char[] W = ['y', '|' ,'p'];
-    public static Char[] X = ['y', '|' ,'o'];
-    public static Char[] Y = ['y', '|' ,'c'];
-    public static Char[] Z = ['y', '|' ,'p'];
+    public static readonly Char[] A = ['g', ' ' ,'g'];
+    public static readonly Char[] B = ['y', ' ' ,'y'];
+    public static readonly Char[] C = ['p', ' ' ,'p'];
+    public static readonly Char[] D = ['o', ' ' ,'o'];
+    public static readonly Char[] E = ['c', ' ' ,'c'];
+    public static readonly Char[] F = ['p', ' ' ,'p'];
+    public static readonly Char[] G = ['m', ' ' ,'m'];
+    public static readonly Char[] H = ['r', ' ' ,'r'];
+    public static readonly Char[] I = ['b', ' ' ,'b'];
+    public static readonly Char[] J = ['g', '|' ,'w'];
+    public static readonly Char[] K = ['g', '|' ,'g'];
+    public static readonly Char[] L = ['g', '|' ,'y'];
+    public static readonly Char[] M = ['g', '|' ,'p'];
+    public static readonly Char[] N = ['g', '|' ,'o'];
+    public static readonly Char[] O = ['g', '|' ,'c'];
+    public static readonly Char[] P = ['g', '|' ,'p'];
+    public static readonly Char[] Q = ['g', '|' ,'m'];
+    public static readonly Char[] R = ['g', '|' ,'r'];
+    public static readonly Char[] S = ['g', '|' ,'b'];
+    public static readonly Char[] T = ['y', '|' ,'w'];
+    public static readonly Char[] U = ['y', '|' ,'g'];
+    public static readonly Char[] V = ['y', '|' ,'y'];
+    public static readonly Char[] W = ['y', '|' ,'p'];
+    public static readonly Char[] X = ['y', '|' ,'o'];
+    public static readonly Char[] Y = ['y', '|' ,'c'];
+    public static readonly Char[] Z = ['y', '|' ,'p'];
 
 
 } 
