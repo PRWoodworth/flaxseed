@@ -13,8 +13,9 @@ public static class Color_Arrays{
     w = white
     | = thin white vertical bar separating the two colors
 
-    periods are grey octagons
-    all other punctuation = blank space
+    spaces = grey octagons
+    all punctuation = blank space
+    // TODO: create codec for punctuation
     */
 
     public static readonly Char[] A = ['g', ' ' ,'g'];
