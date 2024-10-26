@@ -1,4 +1,11 @@
-﻿namespace flaxseed {
+﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Drawing.Processing;
+
+namespace flaxseed {
+    
+    
+    
     class Flaxseed{
 
         static void Main(string[] args){
@@ -27,6 +34,7 @@
 
         static void Generate_Image(List<List<String>> colorized_input){
             // TODO: somehow generate an actual image using the color arrays.
+            // TODO: read https://docs.sixlabors.com/articles/imagesharp.drawing/gettingstarted.html
         }
     }
 }
