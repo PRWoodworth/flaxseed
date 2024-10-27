@@ -22,6 +22,7 @@ namespace flaxseed {
         re = red
         bl = blue
         wh = white
+        //TODO: indicate lack of bar
         | = thin white vertical bar separating two colors        
 
         NUMBER CODEC
@@ -45,7 +46,7 @@ namespace flaxseed {
         Solid color
         */
 
-        private Dictionary<Char, List<String>> Letter_Colors = new Dictionary<Char, List<String>>();
+        private readonly Dictionary<Char, List<String>> Letter_Colors = [];
 
         public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
             Letter_Colors.Add('A', ["l:", "gr", "" ,"gr"]);
@@ -78,7 +79,7 @@ namespace flaxseed {
             return Letter_Colors;
         }
 
-        public Dictionary<Char, List<String>> get_letter_colors(){
+        public Dictionary<Char, List<String>> Get_letter_colors(){
             return Letter_Colors;
         }
     }

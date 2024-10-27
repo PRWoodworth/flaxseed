@@ -13,3 +13,8 @@
 /mnt/HDD/Personal Projects/flaxseed/flaxseed/obj/Debug/net8.0/flaxseed.pdb
 /mnt/HDD/Personal Projects/flaxseed/flaxseed/obj/Debug/net8.0/flaxseed.genruntimeconfig.cache
 /mnt/HDD/Personal Projects/flaxseed/flaxseed/obj/Debug/net8.0/ref/flaxseed.dll
+/mnt/HDD/Personal Projects/flaxseed/flaxseed/bin/Debug/net8.0/SixLabors.Fonts.dll
+/mnt/HDD/Personal Projects/flaxseed/flaxseed/bin/Debug/net8.0/SixLabors.ImageSharp.dll
+/mnt/HDD/Personal Projects/flaxseed/flaxseed/bin/Debug/net8.0/SixLabors.ImageSharp.Drawing.dll
+/mnt/HDD/Personal Projects/flaxseed/flaxseed/obj/Debug/net8.0/flaxseed.csproj.AssemblyReference.cache
+/mnt/HDD/Personal Projects/flaxseed/flaxseed/obj/Debug/net8.0/flaxseed.csproj.Up2Date
