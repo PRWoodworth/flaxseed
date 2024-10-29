@@ -15,9 +15,10 @@ namespace flaxseed {
             List<List<String>> colorized_input = Colorize_Text("test input to make sure everything is working as intended");
             foreach (var d1 in colorized_input)
             {
+                Console.WriteLine(d1);
                 foreach (var d2 in d1)
                 {
-                    Console.Write(d2);
+                    Console.WriteLine(d2);
                 }
             }
             Generate_Image(colorized_input);
@@ -32,11 +33,11 @@ namespace flaxseed {
             var color_codex = new Color_Arrays();
             Dictionary<Char, List<String>> Letter_Colors = color_codex.Init_Letter_Colors_Dict();
             String[] split_input = input.Split(' ');
+
             // TODO: refactor to leave whitespace intact
             List<List<String>> input_colorization = [];
 
-            //TODO: adjust to add a space between every word?
-            // TODO: refactor to go word by word
+
             foreach (var word in split_input){
                 foreach (var letter in word){
                     input_colorization.Add(Letter_Colors[Char.ToUpper(letter)]);

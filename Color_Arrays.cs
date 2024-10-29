@@ -48,6 +48,8 @@ namespace flaxseed {
         */
 
         private readonly Dictionary<Char, List<String>> Letter_Colors = [];
+        private readonly Dictionary<Char, List<String>> Punctuation_Colors = [];
+        private readonly Dictionary<Char, List<String>> Number_Colors = [];
 
         public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
             Letter_Colors.Add('A', ["l:", "gr", "-" ,"gr"]);
@@ -80,8 +82,52 @@ namespace flaxseed {
             return Letter_Colors;
         }
 
-        public Dictionary<Char, List<String>> Get_letter_colors(){
-            return Letter_Colors;
+        // TODO: finish color codes
+        public Dictionary<Char, List<String>> Init_Number_Colors_Dict(){
+            Number_Colors.Add('0', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('1', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('2', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('3', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('4', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('5', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('6', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('7', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('8', ["n:", "gr", "-" ,"gr"]);
+            Number_Colors.Add('9', ["n:", "gr", "-" ,"gr"]);
+            return Number_Colors;
+        }
+
+        // TODO: finish color codes, add ' and "
+        public Dictionary<Char, List<String>> Init_Punctuation_Colors_Dict(){
+            Punctuation_Colors.Add('!', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('@', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('#', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('$', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('%', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('^', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('&', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('*', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('(', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add(')', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('-', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('_', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('+', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('=', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('[', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add(']', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('{', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('}', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('\\', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('|', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add(';', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add(':', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add(',', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('<', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('.', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('>', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('/', ["p:", "gr", "-" ,"gr"]);
+            Punctuation_Colors.Add('?', ["p:", "gr", "-" ,"gr"]);
+            return Punctuation_Colors;
         }
     }
 }
