@@ -12,6 +12,7 @@ namespace flaxseed {
         LETTER CODEC
         Rectangles
         2 colors per letter
+        7 characters per letter 
         gr = green
         ye = yellow
         pu = pink
@@ -22,7 +23,7 @@ namespace flaxseed {
         re = red
         bl = blue
         wh = white
-        //TODO: indicate lack of bar
+        - = lack of bar
         | = thin white vertical bar separating two colors        
 
         NUMBER CODEC
@@ -49,15 +50,15 @@ namespace flaxseed {
         private readonly Dictionary<Char, List<String>> Letter_Colors = [];
 
         public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
-            Letter_Colors.Add('A', ["l:", "gr", "" ,"gr"]);
-            Letter_Colors.Add('B', ["l:", "ye", "" ,"ye"]);
-            Letter_Colors.Add('C', ["l:", "pu", "" ,"pu"]);
-            Letter_Colors.Add('D', ["l:", "or", "" ,"or"]);
-            Letter_Colors.Add('E', ["l:", "cy", "" ,"cy"]);
-            Letter_Colors.Add('F', ["l:", "pu", "" ,"pu"]);
-            Letter_Colors.Add('G', ["l:", "ma", "" ,"ma"]);
-            Letter_Colors.Add('H', ["l:", "re", "" ,"re"]);
-            Letter_Colors.Add('I', ["l:", "bl", "" ,"bl"]);
+            Letter_Colors.Add('A', ["l:", "gr", "-" ,"gr"]);
+            Letter_Colors.Add('B', ["l:", "ye", "-" ,"ye"]);
+            Letter_Colors.Add('C', ["l:", "pu", "-" ,"pu"]);
+            Letter_Colors.Add('D', ["l:", "or", "-" ,"or"]);
+            Letter_Colors.Add('E', ["l:", "cy", "-" ,"cy"]);
+            Letter_Colors.Add('F', ["l:", "pu", "-" ,"pu"]);
+            Letter_Colors.Add('G', ["l:", "ma", "-" ,"ma"]);
+            Letter_Colors.Add('H', ["l:", "re", "-" ,"re"]);
+            Letter_Colors.Add('I', ["l:", "bl", "-" ,"bl"]);
             Letter_Colors.Add('J', ["l:", "gr", "|" ,"wh"]);
             Letter_Colors.Add('K', ["l:", "gr", "|" ,"gr"]);
             Letter_Colors.Add('L', ["l:", "gr", "|" ,"ye"]);
