@@ -68,8 +68,8 @@ namespace flaxseed {
         }
 
         static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<String> letter, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
-            float y = 50 * word_number;
-            float starting_x = 50 * letter_number;
+            float y = 60 * word_number;
+            float starting_x = 40 * letter_number;
             switch (letter[0]){
                 case "l:":
                     // TODO: remove the awkard space between letters  
@@ -77,7 +77,7 @@ namespace flaxseed {
                     canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(starting_x + 20, y, 20, 60)));
                     if(letter[2].Equals("||")){
                         // TODO: get the bar placed properly
-                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(Math.Max(65, 65 * letter_number), y, 10, 60)));
+                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(starting_x + 18, y, 5, 60)));
                     }
                     break;
                 case "n:":
