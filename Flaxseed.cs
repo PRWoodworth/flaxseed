@@ -59,31 +59,30 @@ namespace flaxseed {
         }
 
         static Image<Rgba32> Generate_Rectangle_Code(Image<Rgba32> canvas, List<String> word, Dictionary<String, SixLabors.ImageSharp.Color> color_dict){
-            // TODO: get first 2 characters from input
             RectangularPolygon block_one = new(50, 50, 20, 60);
-            RectangularPolygon block_two = new(50, 60, 20, 60);
+            RectangularPolygon block_two = new(70, 50, 20, 60);
+            // TODO: properly offset each rectangle.
             
-            // TODO: get characters from 0-1
             String type = word[0];
-            Console.WriteLine(type);
 
             switch (type){
                 case "l:":            
                     // TODO: get next 3 sets of 2 characters
-                    String block_one_color = "gr";
-                    String block_two_color = "bl";
+                    String block_one_color = word[1];
+                    String bar_presence = word[2];
+                    String block_two_color = word[3];
                     canvas.Mutate(x => x.Fill(color_dict[block_one_color], block_one));
+                    // TODO: if bar should be present, generate
                     canvas.Mutate(x => x.Fill(color_dict[block_two_color], block_two));
                     break;
                 case "n:":
-                    // TODO: get next 3 sets of 2 characters
                     break;
                 case "p:":
-                    // TODO: get next 3 sets of 2 characters
                     break;                
                 default:
-                    break;
+                
                     // TODO: space?
+                    break;
 
             }
             
