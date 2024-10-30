@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("flaxseed")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4412509f584da4ac2f73ad511891cd64f331e33")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae5fcf455d3cce5e9d6db8446b0d644713722466")]
 [assembly: System.Reflection.AssemblyProductAttribute("flaxseed")]
 [assembly: System.Reflection.AssemblyTitleAttribute("flaxseed")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

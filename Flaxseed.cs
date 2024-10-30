@@ -58,13 +58,14 @@ namespace flaxseed {
             image.Save("test.jpg");
         }
 
-        static Image<Rgba32> Generate_Rectangle_Code(Image<Rgba32> canvas, List<String> letter_code, Dictionary<String, SixLabors.ImageSharp.Color> color_dict){
+        static Image<Rgba32> Generate_Rectangle_Code(Image<Rgba32> canvas, List<String> word, Dictionary<String, SixLabors.ImageSharp.Color> color_dict){
             // TODO: get first 2 characters from input
             RectangularPolygon block_one = new(50, 50, 20, 60);
             RectangularPolygon block_two = new(50, 60, 20, 60);
             
-
-            String type = "";
+            // TODO: get characters from 0-1
+            String type = word[0];
+            Console.WriteLine(type);
 
             switch (type){
                 case "l:":            
