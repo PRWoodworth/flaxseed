@@ -14,41 +14,39 @@ namespace flaxseed {
 
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
-            List<List<String>> colorized_input = Colorize_Text("test input to make sure everything is working as intended to avoid sudden problems", color_codex);
+            List<List<List<String>>> colorized_input = Colorize_Text("test input to make sure everything is working as intended to avoid sudden problems", color_codex);
             Generate_Image(colorized_input, color_codex);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
         }
 
-        static List<List<String>> Colorize_Text(String input, Color_Arrays color_codex){
+        static List<List<List<String>>> Colorize_Text(String input, Color_Arrays color_codex){
             // TODO: console prompt to get input from user 
             // TODO: make actual window to get input from user
-
             
             Dictionary<Char, List<String>> Letter_Colors = color_codex.Init_Letter_Colors_Dict();
             String[] split_input = input.Split(' ');
 
             // TODO: refactor to leave whitespace intact
-            List<List<String>> input_colorization = [];
+            List<List<List<String>>> input_colorization = [];
 
 
             foreach (var word in split_input){
+                List<List<String>> word_colorization = [];
                 foreach (var letter in word){
-                    input_colorization.Add(Letter_Colors[Char.ToUpper(letter)]);
+                    word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
                 }
+                input_colorization.Add(word_colorization);
             }
             
             return input_colorization;
         }
 
-        static void Generate_Image(List<List<String>> colorized_input, Color_Arrays color_codex){
+        static void Generate_Image(List<List<List<String>>> colorized_input, Color_Arrays color_codex){
             int width = 1900;
             int height = 1200;
-            // TODO: somehow generate an actual image using the color arrays.
-            // TODO: read https://docs.sixlabors.com/articles/imagesharp.drawing/gettingstarted.html
             Dictionary<String, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
             using Image<Rgba32> image = new(width, height);
-            // TODO: iterate through entire input array
             int word_number = 0;
             foreach (var word in colorized_input){
                 Generate_Rectangle_Codes_For_Word(image, word, color_dict, word_number);
@@ -60,31 +58,26 @@ namespace flaxseed {
             image.Save("test.jpg");
         }
 
-        static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<String> word, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number){
-            
+        static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<String>> word, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number){
+            int letter_number = 0;
             foreach (var letter in word){
-                canvas = Generate_Rectangle_Code_For_Letter(canvas, word, color_dict, word_number);
+                canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, color_dict, word_number, letter_number);
+                letter_number++;
             }
             return canvas;
         }
 
-        static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<String> letter, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number){
-
-            // TODO: determine Y based on word number
-            // TODO: determine X based on letter number
-
-            String type = letter[0];
-
-            switch (type){
-                case "l:":            
-                    // TODO: get next 3 sets of 2 characters
-                    String block_one_color = letter[1];
-                    String bar_presence = letter[2];
-                    String block_two_color = letter[3];
-                    canvas.Mutate(x => x.Fill(color_dict[block_one_color], new RectangularPolygon(50, 50, 20, 60)));
-                    canvas.Mutate(x => x.Fill(color_dict[block_two_color], new RectangularPolygon(70, 50, 20, 60)));
-                    if(bar_presence.Equals("||")){
-                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(65, 50, 10, 60)));
+        static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<String> letter, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
+            float y = 50 * word_number;
+            float starting_x = 50 * letter_number;
+            switch (letter[0]){
+                case "l:":
+                    // TODO: remove the awkard space between letters  
+                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(starting_x, y, 20, 60)));
+                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(starting_x + 20, y, 20, 60)));
+                    if(letter[2].Equals("||")){
+                        // TODO: get the bar placed properly
+                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(Math.Max(65, 65 * letter_number), y, 10, 60)));
                     }
                     break;
                 case "n:":
@@ -100,8 +93,5 @@ namespace flaxseed {
 
             return canvas;
         }
-
-        // TODO: generate letter code for each letter and pass back to Generate_Rectangle_Codes_For_Word?
-
     }
 }
