@@ -49,16 +49,16 @@ namespace flaxseed {
         Solid color
         */
 
-        private readonly Dictionary<String, SixLabors.ImageSharp.Color> Overall_Codec = [];
+        private readonly Dictionary<string, SixLabors.ImageSharp.Color> Overall_Codec = [];
 
-        private readonly Dictionary<Char, List<String>> Letter_Colors = [];
-        private readonly Dictionary<Char, List<String>> Punctuation_Colors = [];
-        private readonly Dictionary<Char, List<String>> Number_Colors = [];
+        private readonly Dictionary<char, List<string>> Letter_Colors = [];
+        private readonly Dictionary<char, List<string>> Punctuation_Colors = [];
+        private readonly Dictionary<char, List<string>> Number_Colors = [];
 
-        private readonly Dictionary<String, SixLabors.ImageSharp.Color> Color_Codes = [];
+        private readonly Dictionary<string, SixLabors.ImageSharp.Color> Color_Codes = [];
         
 
-        public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
+        public Dictionary<char, List<string>> Init_Letter_Colors_Dict(){
             Letter_Colors.Add('A', ["l:", "gr", "--" ,"gr"]);
             Letter_Colors.Add('B', ["l:", "ye", "--" ,"ye"]);
             Letter_Colors.Add('C', ["l:", "pu", "--" ,"pu"]);
@@ -90,7 +90,7 @@ namespace flaxseed {
         }
 
         // TODO: finish color codes
-        public Dictionary<Char, List<String>> Init_Number_Colors_Dict(){
+        public Dictionary<char, List<string>> Init_Number_Colors_Dict(){
             Number_Colors.Add('0', ["n:", "gr", "--" ,"gr"]);
             Number_Colors.Add('1', ["n:", "gr", "--" ,"gr"]);
             Number_Colors.Add('2', ["n:", "gr", "--" ,"gr"]);
@@ -105,7 +105,7 @@ namespace flaxseed {
         }
 
         // TODO: finish color codes, add ' and "
-        public Dictionary<Char, List<String>> Init_Punctuation_Colors_Dict(){
+        public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
             Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('@', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('#', ["p:", "gr", "--" ,"gr"]);
@@ -128,6 +128,8 @@ namespace flaxseed {
             Punctuation_Colors.Add('|', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add(';', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add(':', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('\'', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('\"', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add(',', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('<', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('.', ["p:", "gr", "--" ,"gr"]);
@@ -137,7 +139,7 @@ namespace flaxseed {
             return Punctuation_Colors;
         }
 
-        public Dictionary<String, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
+        public Dictionary<string, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
             Color_Codes.Add("gr", SixLabors.ImageSharp.Color.Green);
             Color_Codes.Add("ye", SixLabors.ImageSharp.Color.Yellow);
             Color_Codes.Add("pu", SixLabors.ImageSharp.Color.Purple);

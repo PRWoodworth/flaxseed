@@ -14,15 +14,14 @@ namespace flaxseed
 
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
-            List<List<List<string>>> colorized_input = Colorize_Text("test input to make sure everything is working as intended to avoid sudden problems", color_codex);
+            List<List<List<string>>> colorized_input = Colorize_Text("Now this is a password.", color_codex);
             Generate_Image(colorized_input, color_codex);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
         }
 
         static List<List<List<string>>> Colorize_Text(string input, Color_Arrays color_codex){
-            // TODO: console prompt to get input from user 
-            // TODO: make actual window to get input from user
+            // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
             
             Dictionary<char, List<string>> Letter_Colors = color_codex.Init_Letter_Colors_Dict();
             string[] split_input = input.Split(' ');
@@ -34,6 +33,7 @@ namespace flaxseed
             foreach (var word in split_input){
                 List<List<string>> word_colorization = [];
                 foreach (var letter in word){
+                    // TODO: add consideration for non-letters 
                     word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
                 }
                 input_colorization.Add(word_colorization);
@@ -45,7 +45,7 @@ namespace flaxseed
         static void Generate_Image(List<List<List<string>>> colorized_input, Color_Arrays color_codex){
             int width = 1900;
             int height = 1200;
-            Dictionary<String, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
+            Dictionary<string, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
             using Image<Rgba32> image = new(width, height);
             int word_number = 0;
             foreach (var word in colorized_input){
@@ -84,7 +84,6 @@ namespace flaxseed
                 case "p:":
                     break;                
                 default:
-                
                     // TODO: space?
                     break;
 
