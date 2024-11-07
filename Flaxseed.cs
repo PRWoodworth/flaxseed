@@ -14,7 +14,7 @@ namespace flaxseed
 
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
-            List<List<List<string>>> colorized_input = Colorize_Text("Now this is a password.", color_codex);
+            List<List<List<string>>> colorized_input = Colorize_Text("Tm93IHRoaXMgaXMgYSBwYXNzd29yZC4=", color_codex);
             Generate_Image(colorized_input, color_codex);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
@@ -24,6 +24,8 @@ namespace flaxseed
             // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
             
             Dictionary<char, List<string>> Letter_Colors = color_codex.Init_Letter_Colors_Dict();
+            Dictionary<char, List<string>> Punctuation_Colors = color_codex.Init_Punctuation_Colors_Dict();
+            Dictionary<char, List<string>> Number_Colors = color_codex.Init_Number_Colors_Dict();
             string[] split_input = input.Split(' ');
 
             // TODO: refactor to leave whitespace intact
@@ -33,8 +35,15 @@ namespace flaxseed
             foreach (var word in split_input){
                 List<List<string>> word_colorization = [];
                 foreach (var letter in word){
-                    // TODO: add consideration for non-letters 
-                    word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
+                    if(char.IsLetterOrDigit(letter)){
+                        if(char.IsLetter(letter)){
+                            word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
+                        } else {
+                            word_colorization.Add(Number_Colors[letter]);
+                        }
+                    } else {
+                        word_colorization.Add(Punctuation_Colors[letter]);
+                    }
                 }
                 input_colorization.Add(word_colorization);
             }
