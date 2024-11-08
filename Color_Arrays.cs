@@ -21,7 +21,7 @@ namespace flaxseed {
         or = orange
         cy = cyan
         pi = pink
-        ma = magenta (dark purple)
+        ma = magenta
         re = red
         bl = blue
         wh = white
@@ -29,9 +29,12 @@ namespace flaxseed {
         || = thin white vertical bar separating two colors        
 
         NUMBER CODEC
+        
+
+
+        Stretch goal: each 1/n--side segment (1/3 for triangle, 1/6 for hexagon) is a color, meaning 3 colors can be condensed into 1 triangle or 6 into 1 hexagon
         Triangles or hexagons
         Start with solid color
-        Stretch goal: each 1/n--side segment (1/3 for triangle, 1/6 for hexagon) is a color, meaning 3 colors can be condensed into 1 triangle or 6 into 1 hexagon
         0 
         1
         2
@@ -45,8 +48,7 @@ namespace flaxseed {
 
 
         PUNCTUATION CODEX
-        Circles
-        Solid color
+        Stretch goal: Circles?
         */
 
         private readonly Dictionary<string, SixLabors.ImageSharp.Color> Overall_Codec = [];
