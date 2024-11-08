@@ -108,9 +108,9 @@ namespace flaxseed {
 
         // TODO: finish color codes, add ' and "
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
-            Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('!', ["p:", "gr", "||" ,"gr"]);
             Punctuation_Colors.Add('@', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('#', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('#', ["p:", "gr", "||" ,"gr"]);
             Punctuation_Colors.Add('$', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('%', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('^', ["p:", "gr", "--" ,"gr"]);
@@ -121,7 +121,7 @@ namespace flaxseed {
             Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('=', ["p:", "gr", "||" ,"gr"]);
             Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add(']', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('{', ["p:", "gr", "--" ,"gr"]);
