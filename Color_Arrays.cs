@@ -102,7 +102,7 @@ namespace flaxseed {
             Number_Colors.Add('6', ["n:", "cy", "--" ,"cy"]);
             Number_Colors.Add('7', ["n:", "pi", "--" ,"pi"]);
             Number_Colors.Add('8', ["n:", "re", "--" ,"re"]);
-            Number_Colors.Add('9', ["n:", "pu", "--" ,"pu"]);
+            Number_Colors.Add('9', ["n:", "pu", "||" ,"pu"]);
             return Number_Colors;
         }
 

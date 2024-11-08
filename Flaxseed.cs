@@ -79,8 +79,6 @@ namespace flaxseed
         static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
             float y_dim = 60 * word_number;
             float x_dim = 40 * letter_number;
-            float inner_radius = 26;
-            float outer_radius = 30;
             // TODO: X spacing on n: and p: is off.
             switch (letter[0]){
                 case "l:":
@@ -92,17 +90,19 @@ namespace flaxseed
                     }
                     break;
                 case "n:":
-                    inner_radius = 15;
-                    outer_radius = 30;
-                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new Star(new PointF(x_dim, y_dim+outer_radius), 3, inner_radius, outer_radius)));
-                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new Star(new PointF(x_dim, y_dim+outer_radius), 3, inner_radius/3, outer_radius/2)));
-                    break; 
+                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(x_dim, y_dim, 20, 30)));
+                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(x_dim + 20, y_dim, 20, 30)));
+                    if(letter[2].Equals("||")){
+                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(x_dim, y_dim, 40, 5)));
+                    }
+                    break;
                 case "p:":
-                    inner_radius = 26;
-                    outer_radius = 30;
-                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new Star(new PointF(x_dim, y_dim+outer_radius), 6, inner_radius, outer_radius)));
-                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new Star(new PointF(x_dim, y_dim+outer_radius), 6, inner_radius/2, outer_radius/2)));
-                    break;                
+                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(x_dim, y_dim, 20, 60)));
+                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(x_dim + 20, y_dim, 20, 60)));
+                    if(letter[2].Equals("||")){
+                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(x_dim + 18, y_dim, 5, 60)));
+                    }
+                    break;             
                 default:
                     
                     break;
