@@ -1,4 +1,5 @@
 ﻿// https://docs.sixlabors.com/articles/imagesharp/gettingstarted.html
+using Microsoft.VisualBasic;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing;
 using SixLabors.ImageSharp.Drawing.Processing;
@@ -14,7 +15,7 @@ namespace flaxseed
 
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
-            List<List<List<string>>> colorized_input = Colorize_Text("Tm93IHRoaXMgaXMgYSBwYXNzd29yZC4= SDF ASDA STGHR D !@ #$", color_codex);
+            List<List<List<string>>> colorized_input = Colorize_Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.", color_codex);
             Generate_Image(colorized_input, color_codex);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
@@ -52,8 +53,14 @@ namespace flaxseed
         }
 
         static void Generate_Image(List<List<List<string>>> colorized_input, Color_Arrays color_codex){
-            int width = 1900;
-            int height = 1200;
+            int longest_word = 0;
+            foreach (var word in colorized_input){
+                if(word.Count >= longest_word){
+                    longest_word = word.Count;
+                }
+            }
+            int width = 20 * longest_word;
+            int height = 60 * colorized_input.Count;
             Dictionary<string, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
             using Image<Rgba32> image = new(width, height);
             int word_number = 0;
@@ -68,12 +75,14 @@ namespace flaxseed
         }
 
         static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number){
+            // TODO: implement word wrap.
             int letter_number = 0;
             foreach (var letter in word){
                 canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, color_dict, word_number, letter_number);
                 letter_number++;
             }
             return canvas;
+            
         }
 
         static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
@@ -87,7 +96,8 @@ namespace flaxseed
             RectangularPolygon color_segment_two = null;
             RectangularPolygon color_segment_three = null;
 
-            // TODO: simplify this. use switch case to generate new polygons. apply mutation afterwards.  
+            // TODO: improve code formatting for readability here. lot of repeated stuff. 
+
             switch (letter[0]){
                 case "l:":
                     color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height);

@@ -5,16 +5,8 @@ namespace flaxseed {
 
         /*
         OVERALL SCHEMA
-
-        l: = letter
-        n: = number
-        p: = punctuation
-        spaces = grey octagons
-
-        LETTER CODEC
-        Rectangles
-        2 colors per letter
-        7 characters per letter 
+        2 colors per character
+        7 characters in code for each original letter in input 
         gr = green
         ye = yellow
         pu = purple
@@ -26,29 +18,15 @@ namespace flaxseed {
         bl = blue
         wh = white
         -- = lack of bar
-        || = thin white vertical bar separating two colors        
+        || = thin white vertical bar separating two colors    
 
-        NUMBER CODEC
-        
+        l: = letter
+        n: = number
+        p: = punctuation
 
-
-        Stretch goal: each 1/n--side segment (1/3 for triangle, 1/6 for hexagon) is a color, meaning 3 colors can be condensed into 1 triangle or 6 into 1 hexagon
-        Triangles or hexagons
-        Start with solid color
-        0 
-        1
-        2
-        3
-        4
-        5
-        6
-        7
-        8
-        9
-
-
-        PUNCTUATION CODEX
-        Stretch goal: Circles?
+        Letters = rectangle entire height of row
+        Numbers = rectangle on upper half of row
+        Special characters = rectangle on lower half of row
         */
 
         private readonly Dictionary<string, SixLabors.ImageSharp.Color> Overall_Codec = [];
@@ -91,7 +69,6 @@ namespace flaxseed {
             return Letter_Colors;
         }
 
-        // TODO: finish color codes
         public Dictionary<char, List<string>> Init_Number_Colors_Dict(){
             Number_Colors.Add('0', ["n:", "gr", "--" ,"gr"]);
             Number_Colors.Add('1', ["n:", "bl", "--" ,"bl"]);
@@ -106,11 +83,11 @@ namespace flaxseed {
             return Number_Colors;
         }
 
-        // TODO: finish color codes, add ' and "
+        // TODO: finish color codes
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
-            Punctuation_Colors.Add('!', ["p:", "gr", "||" ,"gr"]);
+            Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('@', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('#', ["p:", "gr", "||" ,"gr"]);
+            Punctuation_Colors.Add('#', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('$', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('%', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('^', ["p:", "gr", "--" ,"gr"]);
@@ -121,7 +98,7 @@ namespace flaxseed {
             Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('=', ["p:", "gr", "||" ,"gr"]);
+            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add(']', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('{', ["p:", "gr", "--" ,"gr"]);
@@ -134,7 +111,7 @@ namespace flaxseed {
             Punctuation_Colors.Add('\"', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add(',', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('<', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('.', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('.', ["p:", "ga", "--" ,"ga"]);
             Punctuation_Colors.Add('>', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('/', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('?', ["p:", "gr", "--" ,"gr"]);
@@ -143,6 +120,7 @@ namespace flaxseed {
 
         public Dictionary<string, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
             Color_Codes.Add("gr", SixLabors.ImageSharp.Color.Green);
+            Color_Codes.Add("ga", SixLabors.ImageSharp.Color.Gray);
             Color_Codes.Add("ye", SixLabors.ImageSharp.Color.Yellow);
             Color_Codes.Add("pu", SixLabors.ImageSharp.Color.Purple);
             Color_Codes.Add("or", SixLabors.ImageSharp.Color.Orange);
