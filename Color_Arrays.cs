@@ -17,7 +17,7 @@ namespace flaxseed {
         7 characters per letter 
         gr = green
         ye = yellow
-        pu = pink
+        pu = purple
         or = orange
         cy = cyan
         pi = pink
@@ -94,15 +94,15 @@ namespace flaxseed {
         // TODO: finish color codes
         public Dictionary<char, List<string>> Init_Number_Colors_Dict(){
             Number_Colors.Add('0', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('1', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('2', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('3', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('4', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('5', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('6', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('7', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('8', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('9', ["n:", "gr", "--" ,"gr"]);
+            Number_Colors.Add('1', ["n:", "bl", "--" ,"bl"]);
+            Number_Colors.Add('2', ["n:", "ye", "--" ,"ye"]);
+            Number_Colors.Add('3', ["n:", "wh", "--" ,"wh"]);
+            Number_Colors.Add('4', ["n:", "ma", "--" ,"ma"]);
+            Number_Colors.Add('5', ["n:", "or", "--" ,"or"]);
+            Number_Colors.Add('6', ["n:", "cy", "--" ,"cy"]);
+            Number_Colors.Add('7', ["n:", "pi", "--" ,"pi"]);
+            Number_Colors.Add('8', ["n:", "re", "--" ,"re"]);
+            Number_Colors.Add('9', ["n:", "pu", "--" ,"pu"]);
             return Number_Colors;
         }
 
