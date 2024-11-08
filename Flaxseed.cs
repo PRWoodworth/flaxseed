@@ -80,27 +80,34 @@ namespace flaxseed
             float y_dim = 60 * word_number;
             float x_dim = 40 * letter_number;
 
-            // TODO: simplify this. use switch case to adjust dimensions, have singular mutate block afterwards. 
+            int width = 20;
+            int height = 60;
+
+            RectangularPolygon color_segment_one = null;
+            RectangularPolygon color_segment_two = null;
+            RectangularPolygon color_segment_three = null;
+
+            // TODO: simplify this. use switch case to generate new polygons. apply mutation afterwards.  
             switch (letter[0]){
                 case "l:":
-                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(x_dim, y_dim, 20, 60)));
-                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(x_dim + 20, y_dim, 20, 60)));
+                    color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height);
+                    color_segment_two = new RectangularPolygon(x_dim + width, y_dim, width, height);
                     if(letter[2].Equals("||")){
-                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(x_dim + 18, y_dim, 5, 60)));
+                        color_segment_three = new RectangularPolygon(x_dim + 18, y_dim, width/4, height);
                     }
                     break;
                 case "n:":
-                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(x_dim, y_dim, 20, 30)));
-                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(x_dim + 20, y_dim, 20, 30)));
+                    color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height/2);
+                    color_segment_two = new RectangularPolygon(x_dim + width, y_dim, width, height/2);
                     if(letter[2].Equals("||")){
-                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(x_dim, y_dim, 40, 5)));
+                        color_segment_three = new RectangularPolygon(x_dim, y_dim, width*2, 5);
                     }
                     break;
                 case "p:":
-                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(x_dim, y_dim+30, 20, 30)));
-                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(x_dim + 20, y_dim+30, 20, 30)));
+                    color_segment_one = new RectangularPolygon(x_dim, y_dim+(height/2), width, height/2);
+                    color_segment_two = new RectangularPolygon(x_dim + width, y_dim+(height/2), width, height/2);
                     if(letter[2].Equals("||")){
-                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(x_dim, y_dim + 55, 40, 5)));
+                        color_segment_three = new RectangularPolygon(x_dim, y_dim + height-5, width*2, 5);
                     }
                     break;             
                 default:
@@ -108,7 +115,11 @@ namespace flaxseed
                     break;
 
             }
-
+            canvas.Mutate(x => x.Fill(color_dict[letter[1]], color_segment_one));
+            canvas.Mutate(x => x.Fill(color_dict[letter[3]], color_segment_two));
+            if(letter[2].Equals("||")){
+                canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, color_segment_three));
+            }
             return canvas;
         }
     }
