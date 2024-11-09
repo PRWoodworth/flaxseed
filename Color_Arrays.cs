@@ -83,7 +83,6 @@ namespace flaxseed {
             return Number_Colors;
         }
 
-        // TODO: finish color codes
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
             Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('@', ["p:", "bl", "--" ,"bl"]);
@@ -132,6 +131,8 @@ namespace flaxseed {
             Color_Codes.Add("re", SixLabors.ImageSharp.Color.Red);
             Color_Codes.Add("bl", SixLabors.ImageSharp.Color.Blue);
             Color_Codes.Add("wh", SixLabors.ImageSharp.Color.White);
+            Color_Codes.Add("bk", SixLabors.ImageSharp.Color.Black);
+            Color_Codes.Add("br", SixLabors.ImageSharp.Color.Brown);
             return Color_Codes;
         }
     }
