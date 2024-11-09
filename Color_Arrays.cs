@@ -79,42 +79,44 @@ namespace flaxseed {
             Number_Colors.Add('6', ["n:", "cy", "--" ,"cy"]);
             Number_Colors.Add('7', ["n:", "pi", "--" ,"pi"]);
             Number_Colors.Add('8', ["n:", "re", "--" ,"re"]);
-            Number_Colors.Add('9', ["n:", "pu", "||" ,"pu"]);
+            Number_Colors.Add('9', ["n:", "pu", "--" ,"pu"]);
             return Number_Colors;
         }
 
         // TODO: finish color codes
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
             Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('@', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('#', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('$', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('%', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('^', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('&', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('*', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('(', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(')', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(']', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('{', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('}', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('\\', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('|', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(';', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(':', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('\'', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('\"', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(',', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('<', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('.', ["p:", "ga", "--" ,"ga"]);
-            Punctuation_Colors.Add('>', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('/', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('?', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('@', ["p:", "bl", "--" ,"bl"]);
+            Punctuation_Colors.Add('#', ["p:", "ye", "--" ,"ye"]);
+            Punctuation_Colors.Add('$', ["p:", "wh", "--" ,"wh"]);
+            Punctuation_Colors.Add('%', ["p:", "ma", "--" ,"ma"]);
+            Punctuation_Colors.Add('^', ["p:", "or", "--" ,"or"]);
+            Punctuation_Colors.Add('&', ["p:", "cy", "--" ,"cy"]);
+            Punctuation_Colors.Add('*', ["p:", "pi", "--" ,"pi"]);
+            Punctuation_Colors.Add('(', ["p:", "re", "--" ,"re"]);
+            Punctuation_Colors.Add(')', ["p:", "pu", "--" ,"pu"]);
+            Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"bl"]);
+            Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"ye"]);
+            Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"wh"]);
+            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"ma"]);
+            Punctuation_Colors.Add('`', ["p:", "gr", "--" ,"re"]);
+            Punctuation_Colors.Add('~', ["p:", "gr", "--" ,"cy"]);
+            Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"pu"]);
+            Punctuation_Colors.Add(']', ["p:", "bl", "--" ,"gr"]);
+            Punctuation_Colors.Add('{', ["p:", "bl", "--" ,"wh"]);
+            Punctuation_Colors.Add('}', ["p:", "bl", "--" ,"re"]);
+            Punctuation_Colors.Add('\\', ["p:", "bl", "--" ,"pu"]);
+            Punctuation_Colors.Add('|', ["p:", "bl", "--" ,"ye"]);
+            Punctuation_Colors.Add(';', ["p:", "bl", "--" ,"pi"]);
+            Punctuation_Colors.Add(':', ["p:", "bl", "--" ,"cy"]);
+            Punctuation_Colors.Add('\'', ["p:", "bl", "--" ,"ma"]);
+            Punctuation_Colors.Add('\"', ["p:", "ye", "--" ,"gr"]);
+            Punctuation_Colors.Add(',', ["p:", "ye", "--" ,"bl"]);
+            Punctuation_Colors.Add('<', ["p:", "ye", "--" ,"ma"]);
+            Punctuation_Colors.Add('.', ["p:", "ye", "--" ,"wh"]);
+            Punctuation_Colors.Add('>', ["p:", "ye", "--" ,"re"]);
+            Punctuation_Colors.Add('/', ["p:", "ye", "--" ,"pi"]);
+            Punctuation_Colors.Add('?', ["p:", "ye", "--" ,"cy"]);
             return Punctuation_Colors;
         }
 

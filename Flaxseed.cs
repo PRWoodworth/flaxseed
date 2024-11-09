@@ -1,21 +1,16 @@
 ﻿// https://docs.sixlabors.com/articles/imagesharp/gettingstarted.html
-using Microsoft.VisualBasic;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
-namespace flaxseed
-{
-
-
-
+namespace flaxseed{
     class Flaxseed{
 
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
-            List<List<List<string>>> colorized_input = Colorize_Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.", color_codex);
+            List<List<List<string>>> colorized_input = Colorize_Text("https://www.youtube.com/watch?v=dQw4w9WgXcQ", color_codex);
             Generate_Image(colorized_input, color_codex);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
@@ -59,7 +54,7 @@ namespace flaxseed
                     longest_word = word.Count;
                 }
             }
-            int width = 20 * longest_word;
+            int width = 40 * longest_word;
             int height = 60 * colorized_input.Count;
             Dictionary<string, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
             using Image<Rgba32> image = new(width, height);
