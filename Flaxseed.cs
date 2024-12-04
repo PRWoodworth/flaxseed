@@ -10,7 +10,14 @@ namespace flaxseed{
 
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
-            List<List<List<string>>> colorized_input = Colorize_Text("https://www.youtube.com/watch?v=dQw4w9WgXcQ", color_codex);
+            StreamReader reader = new StreamReader("text_input.txt");
+            var line = reader.ReadLine();
+            var total_input = "";
+            while (line != null){
+                total_input += line;
+                line = reader.ReadLine();
+            }
+            List<List<List<string>>> colorized_input = Colorize_Text(total_input, color_codex);
             Generate_Image(colorized_input, color_codex);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
@@ -87,9 +94,9 @@ namespace flaxseed{
             int width = 20;
             int height = 60;
 
-            RectangularPolygon color_segment_one = null;
-            RectangularPolygon color_segment_two = null;
-            RectangularPolygon color_segment_three = null;
+            RectangularPolygon color_segment_one = new(0, 0, 0, 0);
+            RectangularPolygon color_segment_two = new(0, 0, 0, 0);
+            RectangularPolygon color_segment_three = new(0, 0, 0, 0);
 
             // TODO: improve code formatting for readability here. lot of repeated stuff. 
 
