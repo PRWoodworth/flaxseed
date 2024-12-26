@@ -8,6 +8,9 @@ using SixLabors.ImageSharp.Processing;
 namespace flaxseed{
     class Flaxseed{
 
+        const int height_basis = 40;
+        const int width_basis = 40;
+
         static void Main(string[] args){
             var color_codex = new Color_Arrays();
             StreamReader reader = new StreamReader("text_input.txt");
@@ -61,8 +64,8 @@ namespace flaxseed{
                     longest_word = word.Count;
                 }
             }
-            int width = 40 * longest_word;
-            int height = 60 * colorized_input.Count;
+            int width = width_basis  * longest_word;
+            int height = height_basis * colorized_input.Count;
             Dictionary<string, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
             using Image<Rgba32> image = new(width, height);
             int word_number = 0;
@@ -88,11 +91,11 @@ namespace flaxseed{
         }
 
         static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
-            float y_dim = 60 * word_number;
-            float x_dim = 40 * letter_number;
+            float y_dim = height_basis * word_number;
+            float x_dim = width_basis * letter_number;
 
-            int width = 20;
-            int height = 60;
+            int width = width_basis/2;
+            int height = height_basis;
 
             RectangularPolygon color_segment_one = new(0, 0, 0, 0);
             RectangularPolygon color_segment_two = new(0, 0, 0, 0);
