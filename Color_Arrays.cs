@@ -29,13 +29,11 @@ namespace flaxseed {
         Special characters = rectangle on lower half of row
         */
 
-        private readonly Dictionary<string, SixLabors.ImageSharp.Color> Overall_Codec = [];
-
-        private readonly Dictionary<char, List<string>> Letter_Colors = [];
-        private readonly Dictionary<char, List<string>> Punctuation_Colors = [];
-        private readonly Dictionary<char, List<string>> Number_Colors = [];
-
-        private readonly Dictionary<string, SixLabors.ImageSharp.Color> Color_Codes = [];
+        private static Dictionary<string, SixLabors.ImageSharp.Color> Overall_Codec = [];
+        private static Dictionary<char, List<string>> Letter_Colors = [];
+        private static Dictionary<char, List<string>> Punctuation_Colors = [];
+        private static Dictionary<char, List<string>> Number_Colors = [];
+        private static Dictionary<string, SixLabors.ImageSharp.Color> Color_Codes = [];
         
 
         public Dictionary<char, List<string>> Init_Letter_Colors_Dict(){

@@ -10,9 +10,12 @@ namespace flaxseed{
 
         const int height_basis = 40;
         const int width_basis = 40;
+        static Dictionary<string, SixLabors.ImageSharp.Color> color_dict = new flaxseed.Color_Arrays().Init_Color_Codes_Dict();
+        static Dictionary<char, List<string>> Letter_Colors = new flaxseed.Color_Arrays().Init_Letter_Colors_Dict();
+        static Dictionary<char, List<string>> Punctuation_Colors = new flaxseed.Color_Arrays().Init_Punctuation_Colors_Dict();
+        static Dictionary<char, List<string>> Number_Colors = new flaxseed.Color_Arrays().Init_Number_Colors_Dict();
 
         static void Main(string[] args){
-            var color_codex = new Color_Arrays();
             StreamReader reader = new StreamReader("text_input.txt");
             var line = reader.ReadLine();
             var total_input = "";
@@ -20,18 +23,16 @@ namespace flaxseed{
                 total_input += line;
                 line = reader.ReadLine();
             }
-            List<List<List<string>>> colorized_input = Colorize_Text(total_input, color_codex);
-            Generate_Image(colorized_input, color_codex);
+            List<List<List<string>>> colorized_input = Colorize_Text(total_input);
+            Generate_Image(colorized_input);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
         }
 
-        static List<List<List<string>>> Colorize_Text(string input, Color_Arrays color_codex){
+        static List<List<List<string>>> Colorize_Text(string input){
             // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
             
-            Dictionary<char, List<string>> Letter_Colors = color_codex.Init_Letter_Colors_Dict();
-            Dictionary<char, List<string>> Punctuation_Colors = color_codex.Init_Punctuation_Colors_Dict();
-            Dictionary<char, List<string>> Number_Colors = color_codex.Init_Number_Colors_Dict();
+            
             string[] split_input = input.Split(' ');
 
             // TODO: refactor to leave whitespace intact
@@ -57,7 +58,7 @@ namespace flaxseed{
             return input_colorization;
         }
 
-        static void Generate_Image(List<List<List<string>>> colorized_input, Color_Arrays color_codex){
+        static void Generate_Image(List<List<List<string>>> colorized_input){
             int longest_word = 0;
             foreach (var word in colorized_input){
                 if(word.Count >= longest_word){
@@ -66,11 +67,10 @@ namespace flaxseed{
             }
             int width = width_basis  * longest_word;
             int height = height_basis * colorized_input.Count;
-            Dictionary<string, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
             using Image<Rgba32> image = new(width, height);
             int word_number = 0;
             foreach (var word in colorized_input){
-                Generate_Rectangle_Codes_For_Word(image, word, color_dict, word_number);
+                Generate_Rectangle_Codes_For_Word(image, word, word_number);
                 word_number++;
             }
 
@@ -79,19 +79,19 @@ namespace flaxseed{
             image.Save("test.png");
         }
 
-        static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number){
+        static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number){
             // TODO: implement word wrap.
             // TODO: generate a list of rectangles (entire word) instead of generating each rectangle iteratively and appending? 
             int letter_number = 0;
             foreach (var letter in word){
-                canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, color_dict, word_number, letter_number);
+                canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number);
                 letter_number++;
             }
             return canvas;
             
         }
 
-        static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
+        static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, int word_number, int letter_number){
             float y_dim = height_basis * word_number;
             float x_dim = width_basis * letter_number;
 
@@ -108,31 +108,53 @@ namespace flaxseed{
 
             switch (letter[0]){
                 case "l:":
-                    color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height);
-                    color_segment_two = new RectangularPolygon(x_dim + width, y_dim, width, height);
-                    if(letter[2].Equals("||")){
-                        color_segment_three = new RectangularPolygon(x_dim + 18, y_dim, width/4, height);
-                    }
+                    canvas = Generate_For_Letter(canvas, color_segment_one, color_segment_two, color_segment_three, letter, x_dim, y_dim, width, height);
                     break;
                 case "n:":
-                    color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height/2);
-                    color_segment_two = new RectangularPolygon(x_dim + width, y_dim, width, height/2);
-                    if(letter[2].Equals("||")){
-                        color_segment_three = new RectangularPolygon(x_dim, y_dim, width*2, 5);
-                    }
+                    canvas = Generate_For_Number(canvas, color_segment_one, color_segment_two, color_segment_three, letter, x_dim, y_dim, width, height);
                     break;
                 case "p:":
-                    color_segment_one = new RectangularPolygon(x_dim, y_dim+(height/2), width, height/2);
-                    color_segment_two = new RectangularPolygon(x_dim + width, y_dim+(height/2), width, height/2);
-                    if(letter[2].Equals("||")){
-                        color_segment_three = new RectangularPolygon(x_dim, y_dim + height-5, width*2, 5);
-                    }
+                    canvas = Generate_For_Special_Character(canvas, color_segment_one, color_segment_two, color_segment_three, letter, x_dim, y_dim, width, height);
                     break;             
                 default:
                     
                     break;
 
             }
+            return canvas;
+        }
+
+        static Image<Rgba32> Generate_For_Letter(Image<Rgba32> canvas, RectangularPolygon color_segment_one, RectangularPolygon color_segment_two, RectangularPolygon color_segment_three, List<string> letter, float x_dim, float y_dim, int width, int height){
+            color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height);
+            color_segment_two = new RectangularPolygon(x_dim + width, y_dim, width, height);
+            if(letter[2].Equals("||")){
+                color_segment_three = new RectangularPolygon(x_dim + 18, y_dim, width/4, height);
+            }
+            canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
+            return canvas;
+        }
+
+        static Image<Rgba32> Generate_For_Number(Image<Rgba32> canvas, RectangularPolygon color_segment_one, RectangularPolygon color_segment_two, RectangularPolygon color_segment_three, List<string> letter, float x_dim, float y_dim, int width, int height){
+            color_segment_one = new RectangularPolygon(x_dim, y_dim, width, height/2);
+            color_segment_two = new RectangularPolygon(x_dim + width, y_dim, width, height/2);
+            if(letter[2].Equals("||")){
+                color_segment_three = new RectangularPolygon(x_dim, y_dim, width*2, 5);
+            }
+            canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
+            return canvas;
+        }
+
+        static Image<Rgba32> Generate_For_Special_Character(Image<Rgba32> canvas, RectangularPolygon color_segment_one, RectangularPolygon color_segment_two, RectangularPolygon color_segment_three, List<string> letter, float x_dim, float y_dim, int width, int height){
+            color_segment_one = new RectangularPolygon(x_dim, y_dim+(height/2), width, height/2);
+            color_segment_two = new RectangularPolygon(x_dim + width, y_dim+(height/2), width, height/2);
+            if(letter[2].Equals("||")){
+                color_segment_three = new RectangularPolygon(x_dim, y_dim + height-5, width*2, 5);
+            }
+            canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
+            return canvas;
+        }
+
+        static Image<Rgba32> Mutate_Rectangle(Image<Rgba32> canvas, List<string> letter, RectangularPolygon color_segment_one, RectangularPolygon color_segment_two, RectangularPolygon color_segment_three){
             canvas.Mutate(x => x.Fill(color_dict[letter[1]], color_segment_one));
             canvas.Mutate(x => x.Fill(color_dict[letter[3]], color_segment_two));
             if(letter[2].Equals("||")){
@@ -140,5 +162,6 @@ namespace flaxseed{
             }
             return canvas;
         }
+
     }
 }
