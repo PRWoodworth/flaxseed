@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/HDD/Personal Projects/flaxseed/flaxseed/flaxseed.csproj": {}
+    "D:\\Personal Projects\\flaxseed\\flaxseed\\flaxseed.csproj": {}
   },
   "projects": {
-    "/mnt/HDD/Personal Projects/flaxseed/flaxseed/flaxseed.csproj": {
+    "D:\\Personal Projects\\flaxseed\\flaxseed\\flaxseed.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/HDD/Personal Projects/flaxseed/flaxseed/flaxseed.csproj",
+        "projectUniqueName": "D:\\Personal Projects\\flaxseed\\flaxseed\\flaxseed.csproj",
         "projectName": "flaxseed",
-        "projectPath": "/mnt/HDD/Personal Projects/flaxseed/flaxseed/flaxseed.csproj",
-        "packagesPath": "/home/patrick/.nuget/packages/",
-        "outputPath": "/mnt/HDD/Personal Projects/flaxseed/flaxseed/obj/",
+        "projectPath": "D:\\Personal Projects\\flaxseed\\flaxseed\\flaxseed.csproj",
+        "packagesPath": "C:\\Users\\p77wo\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal Projects\\flaxseed\\flaxseed\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/patrick/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\p77wo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

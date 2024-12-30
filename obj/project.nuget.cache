@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "jYvLIbM64VQ=",
+  "dgSpecHash": "9UhaNYphm0U=",
   "success": true,
-  "projectFilePath": "/mnt/HDD/Personal Projects/flaxseed/flaxseed/flaxseed.csproj",
+  "projectFilePath": "D:\\Personal Projects\\flaxseed\\flaxseed\\flaxseed.csproj",
   "expectedPackageFiles": [
-    "/home/patrick/.nuget/packages/sixlabors.fonts/2.0.4/sixlabors.fonts.2.0.4.nupkg.sha512",
-    "/home/patrick/.nuget/packages/sixlabors.imagesharp/3.1.6/sixlabors.imagesharp.3.1.6.nupkg.sha512",
-    "/home/patrick/.nuget/packages/sixlabors.imagesharp.drawing/2.1.4/sixlabors.imagesharp.drawing.2.1.4.nupkg.sha512"
+    "C:\\Users\\p77wo\\.nuget\\packages\\sixlabors.fonts\\2.0.4\\sixlabors.fonts.2.0.4.nupkg.sha512",
+    "C:\\Users\\p77wo\\.nuget\\packages\\sixlabors.imagesharp\\3.1.6\\sixlabors.imagesharp.3.1.6.nupkg.sha512",
+    "C:\\Users\\p77wo\\.nuget\\packages\\sixlabors.imagesharp.drawing\\2.1.4\\sixlabors.imagesharp.drawing.2.1.4.nupkg.sha512"
   ],
   "logs": []
 }

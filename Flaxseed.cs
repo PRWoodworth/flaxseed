@@ -81,6 +81,7 @@ namespace flaxseed{
 
         static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, Dictionary<string, SixLabors.ImageSharp.Color> color_dict, int word_number){
             // TODO: implement word wrap.
+            // TODO: generate a list of rectangles (entire word) instead of generating each rectangle iteratively and appending? 
             int letter_number = 0;
             foreach (var letter in word){
                 canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, color_dict, word_number, letter_number);
@@ -102,6 +103,8 @@ namespace flaxseed{
             RectangularPolygon color_segment_three = new(0, 0, 0, 0);
 
             // TODO: improve code formatting for readability here. lot of repeated stuff. 
+            // TODO: make each character type its own function, return a composite rectangle?
+            // TODO: improve paramaterization. none of this should be using straight integers!
 
             switch (letter[0]){
                 case "l:":
