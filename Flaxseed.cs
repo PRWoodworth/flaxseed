@@ -10,12 +10,12 @@ namespace flaxseed{
 
         const int height_basis = 40;
         const int width_basis = 40;
-        static readonly Dictionary<string, SixLabors.ImageSharp.Color> color_dict = new flaxseed.Color_Arrays().Init_Color_Codes_Dict();
-        static readonly Dictionary<char, List<string>> Letter_Colors = new flaxseed.Color_Arrays().Init_Letter_Colors_Dict();
-        static readonly Dictionary<char, List<string>> Punctuation_Colors = new flaxseed.Color_Arrays().Init_Punctuation_Colors_Dict();
-        static readonly Dictionary<char, List<string>> Number_Colors = new flaxseed.Color_Arrays().Init_Number_Colors_Dict();
+        static readonly Dictionary<string, SixLabors.ImageSharp.Color> color_dict = new Color_Arrays().Init_Color_Codes_Dict();
+        static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
+        static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
+        static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
         public static void Main(string[] args){
-            StreamReader reader = new StreamReader("text_input.txt");
+            StreamReader reader = new("text_input.txt");
             var line = reader.ReadLine();
             var total_input = "";
             while (line != null){
