@@ -1,40 +1,55 @@
-﻿using Microsoft.VisualBasic;
+﻿// https://docs.sixlabors.com/articles/imagesharp/gettingstarted.html
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using SixLabors.ImageSharp.Processing.Processors.Drawing;
 
-namespace flaxseed {
-    
-    
-    
+namespace flaxseed{
     class Flaxseed{
 
-        static void Main(string[] args){
-            var color_codex = new Color_Arrays();
-            List<List<List<String>>> colorized_input = Colorize_Text("test input to make sure everything is working as intended to avoid sudden problems", color_codex);
-            Generate_Image(colorized_input, color_codex);
+        const int height_basis = 40;
+        const int width_basis = 40;
+        static readonly Dictionary<string, SixLabors.ImageSharp.Color> color_dict = new Color_Arrays().Init_Color_Codes_Dict();
+        static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
+        static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
+        static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
+        public static void Main(string[] args){
+            StreamReader reader = new("text_input.txt");
+            var line = reader.ReadLine();
+            var total_input = "";
+            while (line != null){
+                total_input += line;
+                line = reader.ReadLine();
+            }
+            List<List<List<string>>> colorized_input = Colorize_Text(total_input);
+            Generate_Image(colorized_input);
             // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
         }
 
-        static List<List<List<String>>> Colorize_Text(String input, Color_Arrays color_codex){
-            // TODO: console prompt to get input from user 
-            // TODO: make actual window to get input from user
+        static List<List<List<string>>> Colorize_Text(string input){
+            // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
             
-            Dictionary<Char, List<String>> Letter_Colors = color_codex.Init_Letter_Colors_Dict();
-            String[] split_input = input.Split(' ');
+            
+            string[] split_input = input.Split(' ');
 
             // TODO: refactor to leave whitespace intact
-            List<List<List<String>>> input_colorization = [];
+            List<List<List<string>>> input_colorization = [];
 
 
             foreach (var word in split_input){
-                List<List<String>> word_colorization = [];
+                List<List<string>> word_colorization = [];
                 foreach (var letter in word){
-                    word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
+                    if(char.IsLetterOrDigit(letter)){
+                        if(char.IsLetter(letter)){
+                            word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
+                        } else {
+                            word_colorization.Add(Number_Colors[letter]);
+                        }
+                    } else {
+                        word_colorization.Add(Punctuation_Colors[letter]);
+                    }
                 }
                 input_colorization.Add(word_colorization);
             }
@@ -42,56 +57,109 @@ namespace flaxseed {
             return input_colorization;
         }
 
-        static void Generate_Image(List<List<List<String>>> colorized_input, Color_Arrays color_codex){
-            int width = 1900;
-            int height = 1200;
-            Dictionary<String, SixLabors.ImageSharp.Color> color_dict = color_codex.Init_Color_Codes_Dict();
+        static void Generate_Image(List<List<List<string>>> colorized_input){
+            int longest_word = 0;
+            foreach (var word in colorized_input){
+                if(word.Count >= longest_word){
+                    longest_word = word.Count;
+                }
+            }
+            int width = width_basis  * longest_word;
+            int height = height_basis * colorized_input.Count;
             using Image<Rgba32> image = new(width, height);
             int word_number = 0;
             foreach (var word in colorized_input){
-                Generate_Rectangle_Codes_For_Word(image, word, color_dict, word_number);
+                Generate_Rectangle_Codes_For_Word(image, word, word_number);
                 word_number++;
             }
 
                         
             // TODO: prompt for user to specify file save location, as part of an actual app or something idk
-            image.Save("test.jpg");
+            image.Save("test.png");
         }
 
-        static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<String>> word, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number){
+        static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number){
+            // TODO: implement word wrap.
+            // TODO: generate a list of rectangles (entire word) instead of generating each rectangle iteratively and appending? 
             int letter_number = 0;
             foreach (var letter in word){
-                canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, color_dict, word_number, letter_number);
+                canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number);
                 letter_number++;
             }
             return canvas;
+            
         }
 
-        static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<String> letter, Dictionary<String, SixLabors.ImageSharp.Color> color_dict, int word_number, int letter_number){
-            float y = 60 * word_number;
-            float starting_x = 40 * letter_number;
+        static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, int word_number, int letter_number){
+            float y_dim = height_basis * word_number;
+            float x_dim = width_basis * letter_number;
+
+            int width = width_basis/2;
+            int height = height_basis;
+
+            // TODO: improve code formatting for readability here. lot of repeated stuff. 
+            // TODO: make each character type its own function, return a composite rectangle?
+            // TODO: improve paramaterization. none of this should be using straight integers!
+
             switch (letter[0]){
                 case "l:":
-                    // TODO: remove the awkard space between letters  
-                    canvas.Mutate(x => x.Fill(color_dict[letter[1]], new RectangularPolygon(starting_x, y, 20, 60)));
-                    canvas.Mutate(x => x.Fill(color_dict[letter[3]], new RectangularPolygon(starting_x + 20, y, 20, 60)));
-                    if(letter[2].Equals("||")){
-                        // TODO: get the bar placed properly
-                        canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, new RectangularPolygon(starting_x + 18, y, 5, 60)));
-                    }
+                    canvas = Generate_For_Letter(canvas, letter, x_dim, y_dim, width, height);
                     break;
                 case "n:":
+                    canvas = Generate_For_Number(canvas, letter, x_dim, y_dim, width, height);
                     break;
                 case "p:":
-                    break;                
+                    canvas = Generate_For_Special_Character(canvas, letter, x_dim, y_dim, width, height);
+                    break;             
                 default:
-                
-                    // TODO: space?
+                    
                     break;
 
             }
-
             return canvas;
         }
+
+        static Image<Rgba32> Generate_For_Letter(Image<Rgba32> canvas, List<string> letter, float x_dim, float y_dim, int width, int height){
+            RectangularPolygon color_segment_one = new(x_dim, y_dim, width, height);
+            RectangularPolygon color_segment_two = new(x_dim + width, y_dim, width, height);
+            RectangularPolygon color_segment_three = new (0,0,0,0);
+            if(letter[2].Equals("||")){
+                color_segment_three = new (x_dim + 18, y_dim, width/4, height);
+            }
+            canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
+            return canvas;
+        }
+
+        static Image<Rgba32> Generate_For_Number(Image<Rgba32> canvas, List<string> letter, float x_dim, float y_dim, int width, int height){
+            RectangularPolygon color_segment_one = new (x_dim, y_dim, width, height/2);
+            RectangularPolygon color_segment_two = new (x_dim + width, y_dim, width, height/2);
+            RectangularPolygon color_segment_three = new (0,0,0,0);
+            if(letter[2].Equals("||")){
+                color_segment_three = new RectangularPolygon(x_dim, y_dim, width*2, 5);
+            }
+            canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
+            return canvas;
+        }
+
+        static Image<Rgba32> Generate_For_Special_Character(Image<Rgba32> canvas, List<string> letter, float x_dim, float y_dim, int width, int height){
+            RectangularPolygon color_segment_one = new (x_dim, y_dim+(height/2), width, height/2);
+            RectangularPolygon color_segment_two = new (x_dim + width, y_dim+(height/2), width, height/2);
+            RectangularPolygon color_segment_three = new (0,0,0,0);
+            if(letter[2].Equals("||")){
+                color_segment_three = new RectangularPolygon(x_dim, y_dim + height-5, width*2, 5);
+            }
+            canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
+            return canvas;
+        }
+
+        static Image<Rgba32> Mutate_Rectangle(Image<Rgba32> canvas, List<string> letter, RectangularPolygon color_segment_one, RectangularPolygon color_segment_two, RectangularPolygon color_segment_three){
+            canvas.Mutate(x => x.Fill(color_dict[letter[1]], color_segment_one));
+            canvas.Mutate(x => x.Fill(color_dict[letter[3]], color_segment_two));
+            if(letter[2].Equals("||")){
+                canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, color_segment_three));
+            }
+            return canvas;
+        }
+
     }
 }

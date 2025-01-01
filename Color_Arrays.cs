@@ -5,60 +5,37 @@ namespace flaxseed {
 
         /*
         OVERALL SCHEMA
-
-        l: = letter
-        n: = number
-        p: = punctuation
-        spaces = grey octagons
-
-        LETTER CODEC
-        Rectangles
-        2 colors per letter
-        7 characters per letter 
+        2 colors per character
+        7 characters in code for each original letter in input 
         gr = green
         ye = yellow
-        pu = pink
+        pu = purple
         or = orange
         cy = cyan
         pi = pink
-        ma = magenta (dark purple)
+        ma = magenta
         re = red
         bl = blue
         wh = white
         -- = lack of bar
-        || = thin white vertical bar separating two colors        
+        || = thin white vertical bar separating two colors    
 
-        NUMBER CODEC
-        Triangles or hexagons
-        Start with solid color
-        Stretch goal: each 1/n--side segment (1/3 for triangle, 1/6 for hexagon) is a color, meaning 3 colors can be condensed into 1 triangle or 6 into 1 hexagon
-        0 
-        1
-        2
-        3
-        4
-        5
-        6
-        7
-        8
-        9
+        l: = letter
+        n: = number
+        p: = punctuation
 
-
-        PUNCTUATION CODEX
-        Circles
-        Solid color
+        Letters = rectangle entire height of row
+        Numbers = rectangle on upper half of row
+        Special characters = rectangle on lower half of row
         */
-
-        private readonly Dictionary<String, SixLabors.ImageSharp.Color> Overall_Codec = [];
-
-        private readonly Dictionary<Char, List<String>> Letter_Colors = [];
-        private readonly Dictionary<Char, List<String>> Punctuation_Colors = [];
-        private readonly Dictionary<Char, List<String>> Number_Colors = [];
-
-        private readonly Dictionary<String, SixLabors.ImageSharp.Color> Color_Codes = [];
+        
+        private readonly Dictionary<char, List<string>> Letter_Colors = [];
+        private readonly Dictionary<char, List<string>> Punctuation_Colors = [];
+        private readonly Dictionary<char, List<string>> Number_Colors = [];
+        private readonly Dictionary<string, SixLabors.ImageSharp.Color> Color_Codes = [];
         
 
-        public Dictionary<Char, List<String>> Init_Letter_Colors_Dict(){
+        public Dictionary<char, List<string>> Init_Letter_Colors_Dict(){
             Letter_Colors.Add('A', ["l:", "gr", "--" ,"gr"]);
             Letter_Colors.Add('B', ["l:", "ye", "--" ,"ye"]);
             Letter_Colors.Add('C', ["l:", "pu", "--" ,"pu"]);
@@ -89,56 +66,59 @@ namespace flaxseed {
             return Letter_Colors;
         }
 
-        // TODO: finish color codes
-        public Dictionary<Char, List<String>> Init_Number_Colors_Dict(){
+        public Dictionary<char, List<string>> Init_Number_Colors_Dict(){
             Number_Colors.Add('0', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('1', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('2', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('3', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('4', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('5', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('6', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('7', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('8', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('9', ["n:", "gr", "--" ,"gr"]);
+            Number_Colors.Add('1', ["n:", "bl", "--" ,"bl"]);
+            Number_Colors.Add('2', ["n:", "ye", "--" ,"ye"]);
+            Number_Colors.Add('3', ["n:", "wh", "--" ,"wh"]);
+            Number_Colors.Add('4', ["n:", "ma", "--" ,"ma"]);
+            Number_Colors.Add('5', ["n:", "or", "--" ,"or"]);
+            Number_Colors.Add('6', ["n:", "cy", "--" ,"cy"]);
+            Number_Colors.Add('7', ["n:", "pi", "--" ,"pi"]);
+            Number_Colors.Add('8', ["n:", "re", "--" ,"re"]);
+            Number_Colors.Add('9', ["n:", "pu", "--" ,"pu"]);
             return Number_Colors;
         }
 
-        // TODO: finish color codes, add ' and "
-        public Dictionary<Char, List<String>> Init_Punctuation_Colors_Dict(){
+        public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
             Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('@', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('#', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('$', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('%', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('^', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('&', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('*', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('(', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(')', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(']', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('{', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('}', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('\\', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('|', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(';', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(':', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add(',', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('<', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('.', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('>', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('/', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('?', ["p:", "gr", "--" ,"gr"]);
+            Punctuation_Colors.Add('@', ["p:", "bl", "--" ,"bl"]);
+            Punctuation_Colors.Add('#', ["p:", "ye", "--" ,"ye"]);
+            Punctuation_Colors.Add('$', ["p:", "wh", "--" ,"wh"]);
+            Punctuation_Colors.Add('%', ["p:", "ma", "--" ,"ma"]);
+            Punctuation_Colors.Add('^', ["p:", "or", "--" ,"or"]);
+            Punctuation_Colors.Add('&', ["p:", "cy", "--" ,"cy"]);
+            Punctuation_Colors.Add('*', ["p:", "pi", "--" ,"pi"]);
+            Punctuation_Colors.Add('(', ["p:", "re", "--" ,"re"]);
+            Punctuation_Colors.Add(')', ["p:", "pu", "--" ,"pu"]);
+            Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"bl"]);
+            Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"ye"]);
+            Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"wh"]);
+            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"ma"]);
+            Punctuation_Colors.Add('`', ["p:", "gr", "--" ,"re"]);
+            Punctuation_Colors.Add('~', ["p:", "gr", "--" ,"cy"]);
+            Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"pu"]);
+            Punctuation_Colors.Add(']', ["p:", "bl", "--" ,"gr"]);
+            Punctuation_Colors.Add('{', ["p:", "bl", "--" ,"wh"]);
+            Punctuation_Colors.Add('}', ["p:", "bl", "--" ,"re"]);
+            Punctuation_Colors.Add('\\', ["p:", "bl", "--" ,"pu"]);
+            Punctuation_Colors.Add('|', ["p:", "bl", "--" ,"ye"]);
+            Punctuation_Colors.Add(';', ["p:", "bl", "--" ,"pi"]);
+            Punctuation_Colors.Add(':', ["p:", "bl", "--" ,"cy"]);
+            Punctuation_Colors.Add('\'', ["p:", "bl", "--" ,"ma"]);
+            Punctuation_Colors.Add('\"', ["p:", "ye", "--" ,"gr"]);
+            Punctuation_Colors.Add(',', ["p:", "ye", "--" ,"bl"]);
+            Punctuation_Colors.Add('<', ["p:", "ye", "--" ,"ma"]);
+            Punctuation_Colors.Add('.', ["p:", "ye", "--" ,"wh"]);
+            Punctuation_Colors.Add('>', ["p:", "ye", "--" ,"re"]);
+            Punctuation_Colors.Add('/', ["p:", "ye", "--" ,"pi"]);
+            Punctuation_Colors.Add('?', ["p:", "ye", "--" ,"cy"]);
             return Punctuation_Colors;
         }
 
-        public Dictionary<String, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
+        public Dictionary<string, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
             Color_Codes.Add("gr", SixLabors.ImageSharp.Color.Green);
+            Color_Codes.Add("ga", SixLabors.ImageSharp.Color.Gray);
             Color_Codes.Add("ye", SixLabors.ImageSharp.Color.Yellow);
             Color_Codes.Add("pu", SixLabors.ImageSharp.Color.Purple);
             Color_Codes.Add("or", SixLabors.ImageSharp.Color.Orange);
@@ -148,6 +128,8 @@ namespace flaxseed {
             Color_Codes.Add("re", SixLabors.ImageSharp.Color.Red);
             Color_Codes.Add("bl", SixLabors.ImageSharp.Color.Blue);
             Color_Codes.Add("wh", SixLabors.ImageSharp.Color.White);
+            Color_Codes.Add("bk", SixLabors.ImageSharp.Color.Black);
+            Color_Codes.Add("br", SixLabors.ImageSharp.Color.Brown);
             return Color_Codes;
         }
     }
