@@ -140,7 +140,6 @@ namespace flaxseed{
             canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
             return canvas;
         }
-
         static Image<Rgba32> Generate_For_Special_Character(Image<Rgba32> canvas, List<string> letter, float x_dim, float y_dim, int width, int height){
             RectangularPolygon color_segment_one = new (x_dim, y_dim+(height/2), width, height/2);
             RectangularPolygon color_segment_two = new (x_dim + width, y_dim+(height/2), width, height/2);
@@ -156,7 +155,7 @@ namespace flaxseed{
             canvas.Mutate(x => x.Fill(color_dict[letter[1]], color_segment_one));
             canvas.Mutate(x => x.Fill(color_dict[letter[3]], color_segment_two));
             if(letter[2].Equals("||")){
-                canvas.Mutate(x => x.Fill(SixLabors.ImageSharp.Color.Grey, color_segment_three));
+                canvas.Mutate(x => x.Fill(Color.Grey, color_segment_three));
             }
             return canvas;
         }
