@@ -10,7 +10,6 @@ namespace flaxseed{
 
         const int height_basis = 40;
         const int width_basis = 40;
-        static readonly Dictionary<string, SixLabors.ImageSharp.Color> color_dict = new Color_Arrays().Init_Color_Codes_Dict();
         static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
         static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
         static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
@@ -77,6 +76,16 @@ namespace flaxseed{
             // TODO: prompt for user to specify file save location, as part of an actual app or something idk
             image.Save("test.png");
         }
+
+        // TODO: word wrap
+        /*
+            Break input into individual words, preserving whitespace.
+            Convert to color codes, get back 2D list of rectangles (list of list of rectangles) 
+            Iterate through colorized input, mutating canvas as we go.
+                Determine upper bound on canas width.
+                Multiple words on same line unless width of word would extend beyond canvas width. 
+                If so, move to new line.
+        */
 
         static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number){
             // TODO: implement word wrap.

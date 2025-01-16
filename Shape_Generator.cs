@@ -1,5 +1,15 @@
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Drawing;
+using SixLabors.ImageSharp.Drawing.Processing;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
+
 namespace flaxseed{
+    
+    
     class Shape_Generators{
+
+        static readonly Dictionary<string, Color> color_dict = new Color_Arrays().Init_Color_Codes_Dict();
         public static Image<Rgba32> Generate_For_Letter(Image<Rgba32> canvas, List<string> letter, float x_dim, float y_dim, int width, int height){
             RectangularPolygon color_segment_one = new(x_dim, y_dim, width, height);
             RectangularPolygon color_segment_two = new(x_dim + width, y_dim, width, height);
