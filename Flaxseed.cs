@@ -135,7 +135,7 @@ namespace flaxseed{
             RectangularPolygon color_segment_two = new (x_dim + width, y_dim, width, height/2);
             RectangularPolygon color_segment_three = new (0,0,0,0);
             if(letter[2].Equals("||")){
-                color_segment_three = new RectangularPolygon(x_dim, y_dim, width*2, 5);
+                color_segment_three = new RectangularPolygon(x_dim, y_dim, width*2, height/8);
             }
             canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
             return canvas;
@@ -145,7 +145,7 @@ namespace flaxseed{
             RectangularPolygon color_segment_two = new (x_dim + width, y_dim+(height/2), width, height/2);
             RectangularPolygon color_segment_three = new (0,0,0,0);
             if(letter[2].Equals("||")){
-                color_segment_three = new RectangularPolygon(x_dim, y_dim + height-5, width*2, 5);
+                color_segment_three = new RectangularPolygon(x_dim, y_dim + height-5, width*2, height/8);
             }
             canvas = Mutate_Rectangle(canvas, letter, color_segment_one, color_segment_two, color_segment_three);
             return canvas;
