@@ -13,7 +13,7 @@ namespace flaxseed{
         static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
         static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
         static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
-        public static void Main(string[] args){
+        public static void Main(){
             StreamReader reader = new("text_input.txt");
             var line = reader.ReadLine();
             var total_input = "";
@@ -23,17 +23,16 @@ namespace flaxseed{
             }
             List<List<List<string>>> colorized_input = Colorize_Text(total_input);
             Generate_Image(colorized_input);
-            // TODO: convert text to color blocks like in New Order - Blue Monday (Official Lyric Video)
 
         }
 
         static List<List<List<string>>> Colorize_Text(string input){
             // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
-            
-            
-            string[] split_input = input.Split(' ');
 
+            char delimiter = ' ';
+			string[] split_input = input.Split(delimiter);
             // TODO: refactor to leave whitespace intact
+
             List<List<List<string>>> input_colorization = [];
 
 
@@ -78,18 +77,9 @@ namespace flaxseed{
         }
 
         // TODO: word wrap
-        /*
-            Break input into individual words, preserving whitespace.
-            Convert to color codes, get back 2D list of rectangles (list of list of rectangles) 
-            Iterate through colorized input, mutating canvas as we go.
-                Determine upper bound on canas width.
-                Multiple words on same line unless width of word would extend beyond canvas width. 
-                If so, move to new line.
-        */
+
 
         static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number){
-            // TODO: implement word wrap.
-            // TODO: generate a list of rectangles (entire word) instead of generating each rectangle iteratively and appending? 
             int letter_number = 0;
             foreach (var letter in word){
                 canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number);
@@ -107,8 +97,6 @@ namespace flaxseed{
             int height = height_basis;
 
             // TODO: improve code formatting for readability here. lot of repeated stuff. 
-            // TODO: make each character type its own function, return a composite rectangle?
-            // TODO: improve paramaterization. none of this should be using straight integers!
 
             switch (letter[0]){
                 case "l:":
