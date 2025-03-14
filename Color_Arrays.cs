@@ -62,7 +62,6 @@ namespace flaxseed {
             Letter_Colors.Add('X', ["l:", "ye", "||" ,"or"]);
             Letter_Colors.Add('Y', ["l:", "ye", "||" ,"cy"]);
             Letter_Colors.Add('Z', ["l:", "ye", "||" ,"pu"]);
-
             return Letter_Colors;
         }
 
@@ -81,6 +80,7 @@ namespace flaxseed {
         }
 
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
+            Punctuation_Colors.Add(' ', ["p:", "bk", "--", "bk"]);
             Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
             Punctuation_Colors.Add('@', ["p:", "bl", "--" ,"bl"]);
             Punctuation_Colors.Add('#', ["p:", "ye", "--" ,"ye"]);

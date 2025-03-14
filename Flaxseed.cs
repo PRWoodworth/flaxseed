@@ -1,6 +1,7 @@
 ﻿// https://docs.sixlabors.com/articles/imagesharp/gettingstarted.html
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using System.Text.RegularExpressions;
 
 namespace flaxseed{
     class Flaxseed{
@@ -26,8 +27,8 @@ namespace flaxseed{
         static List<List<List<string>>> Colorize_Text(string input){
             // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
 
-            char delimiter = ' ';
-			string[] split_input = input.Split(delimiter);
+            String pattern = "(' ')";
+			string[] split_input = Regex.Split(input, pattern);
             // TODO: refactor to leave whitespace intact
 
             List<List<List<string>>> input_colorization = [];
