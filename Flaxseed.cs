@@ -29,7 +29,6 @@ namespace flaxseed{
 
 			String pattern = "(' ')";
 			string[] split_input = Regex.Split(input, pattern);
-			// TODO: refactor to leave whitespace intact
 
 			List<List<List<string>>> input_colorization = [];
 
@@ -66,7 +65,7 @@ namespace flaxseed{
 			int word_number = 0;
 			foreach (var word in colorized_input){
 				// TODO: calculate start point of word here?
-				Generate_Rectangle_Codes_For_Word(image, word, word_number);
+				Generate_Rectangle_Codes_For_Word(image, word, word_number, height_basis * word_number);
 				word_number++;
 			}
 
@@ -78,10 +77,11 @@ namespace flaxseed{
 		// TODO: word wrap
 
 
-		static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number){
+		static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number, float y_dim){
 			int letter_number = 0;
 			foreach (var letter in word){
-				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number);
+				float x_dim = Math.Max(width_basis, letter_number * width_basis);
+				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, x_dim);
 				letter_number++;
 			}
 			return canvas;
@@ -89,11 +89,14 @@ namespace flaxseed{
 		}
 
 		// TODO: calculate correct location, height, width, etc. BEFORE hand and then pass to this function. 
-		static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, int word_number, int letter_number){
-			float y_dim = height_basis * word_number;
-			float x_dim = width_basis * letter_number;
-
-			int width = width_basis/2;
+		static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas,
+                                                          List<string> letter,
+                                                          int word_number,
+                                                          int letter_number,
+                                                          float y_dim,
+                                                          float x_dim)
+        {
+            int width = width_basis/2;
 			int height = height_basis;
 
 			// TODO: improve code formatting for readability here. lot of repeated stuff. 
