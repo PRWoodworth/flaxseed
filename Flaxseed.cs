@@ -64,6 +64,7 @@ namespace flaxseed{
             using Image<Rgba32> image = new(width, height);
             int word_number = 0;
             foreach (var word in colorized_input){
+                // TODO: calculate start point of word here?
                 Generate_Rectangle_Codes_For_Word(image, word, word_number);
                 word_number++;
             }
@@ -86,6 +87,7 @@ namespace flaxseed{
             
         }
 
+        // TODO: calculate correct location, height, width, etc. BEFORE hand and then pass to this function. 
         static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas, List<string> letter, int word_number, int letter_number){
             float y_dim = height_basis * word_number;
             float x_dim = width_basis * letter_number;
