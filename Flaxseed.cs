@@ -5,13 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace flaxseed{
 	class Flaxseed{
-
-		const int height_basis = 40;
-		const int width_basis = 40;
-		static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
-		static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
-		static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
-		public static void Main(){
+        public static void Main(){
 			StreamReader reader = new("text_input.txt");
 			var line = reader.ReadLine();
 			var total_input = "";
@@ -38,12 +32,12 @@ namespace flaxseed{
 				foreach (var letter in word){
 					if(char.IsLetterOrDigit(letter)){
 						if(char.IsLetter(letter)){
-							word_colorization.Add(Letter_Colors[char.ToUpper(letter)]);
+							word_colorization.Add(HelperVariables.Letter_Colors_Public[char.ToUpper(letter)]);
 						} else {
-							word_colorization.Add(Number_Colors[letter]);
+							word_colorization.Add(HelperVariables.Number_Colors_Public[letter]);
 						}
 					} else {
-						word_colorization.Add(Punctuation_Colors[letter]);
+						word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
 					}
 				}
 				input_colorization.Add(word_colorization);
@@ -59,13 +53,13 @@ namespace flaxseed{
 					longest_word = word.Count;
 				}
 			}
-			int width = width_basis  * longest_word;
-			int height = height_basis * colorized_input.Count;
+			int width = HelperVariables.Width_basis  * longest_word;
+			int height = HelperVariables.Height_basis * colorized_input.Count;
 			using Image<Rgba32> image = new(width, height);
 			int word_number = 0;
 			foreach (var word in colorized_input){
 				// TODO: calculate start point of word here?
-				Generate_Rectangle_Codes_For_Word(image, word, word_number, height_basis * word_number);
+				Generate_Rectangle_Codes_For_Word(image, word, word_number, HelperVariables.Height_basis * word_number);
 				word_number++;
 			}
 
@@ -80,7 +74,7 @@ namespace flaxseed{
 		static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number, float y_dim){
 			int letter_number = 0;
 			foreach (var letter in word){
-				float x_dim = Math.Max(width_basis, letter_number * width_basis);
+				float x_dim = Math.Max(HelperVariables.Width_basis, letter_number * HelperVariables.Width_basis);
 				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, x_dim);
 				letter_number++;
 			}
@@ -96,8 +90,8 @@ namespace flaxseed{
                                                           float y_dim,
                                                           float x_dim)
         {
-            int width = width_basis/2;
-			int height = height_basis;
+            int width = HelperVariables.Width_basis / 2;
+			int height = HelperVariables.Height_basis;
 
 			// TODO: improve code formatting for readability here. lot of repeated stuff. 
 
