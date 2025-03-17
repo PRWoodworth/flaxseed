@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace flaxseed{
 	class Flaxseed{
-        public static void Main(){
+		public static void Main(){
 			StreamReader reader = new("text_input.txt");
 			var line = reader.ReadLine();
 			var total_input = "";
@@ -47,25 +47,27 @@ namespace flaxseed{
 		}
 
 		static void Generate_Image(List<List<List<string>>> colorized_input){
-			int longest_word = 0;
-			foreach (var word in colorized_input){
-				if(word.Count >= longest_word){
-					longest_word = word.Count;
-				}
-			}
-			int width = 1980;
-			int height = 1020;
+			int width = 800;
+			int height = 600;
 			Image<Rgba32> image = new(width, height);
 			int word_number = 0;
+			int word_height = 0;
+			float x_coordinate_holder = 0;
 			foreach (var word in colorized_input){
-				int word_height = HelperVariables.Height_basis_public * word_number;
-                int letter_number = 0;
-                foreach (var letter in word){
-                    float x_coordinate = letter_number * HelperVariables.Width_basis_public;
-                    image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
-                    letter_number++;
+				int letter_number = 0;
+				if ((word.Count * HelperVariables.Width_basis_public) > width){
+					word_height += HelperVariables.Height_basis_public;
+					word_number = 0;
+				}
+				foreach (var letter in word){
+					float x_coordinate = (letter_number + word_number) * HelperVariables.Width_basis_public;
+					image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
+					letter_number++;
+					x_coordinate_holder = x_coordinate;
+
+
                 }
-                word_number++;
+				word_number++;
 			}
 
 						
@@ -75,11 +77,11 @@ namespace flaxseed{
 
 		// TODO: calculate correct location, height, width, etc. BEFORE hand and then pass to this function. 
 		static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas,
-                                                          List<string> letter,
-                                                          float y_dim,
-                                                          float x_dim)
-        {
-            int width = HelperVariables.Width_basis_public / 2;
+														  List<string> letter,
+														  float y_dim,
+														  float x_dim)
+		{
+			int width = HelperVariables.Width_basis_public / 2;
 			int height = HelperVariables.Height_basis_public;
 
 			// TODO: improve code formatting for readability here. lot of repeated stuff. 
