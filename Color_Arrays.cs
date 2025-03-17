@@ -3,6 +3,7 @@ using System.Drawing;
 namespace flaxseed { 
     public class Color_Arrays{
 
+
         /*
         OVERALL SCHEMA
         2 colors per character
@@ -28,7 +29,7 @@ namespace flaxseed {
         Numbers = rectangle on upper half of row
         Special characters = rectangle on lower half of row
         */
-        
+
         private readonly Dictionary<char, List<string>> Letter_Colors = [];
         private readonly Dictionary<char, List<string>> Punctuation_Colors = [];
         private readonly Dictionary<char, List<string>> Number_Colors = [];
@@ -36,100 +37,100 @@ namespace flaxseed {
         
 
         public Dictionary<char, List<string>> Init_Letter_Colors_Dict(){
-            Letter_Colors.Add('A', ["l:", "gr", "--" ,"gr"]);
-            Letter_Colors.Add('B', ["l:", "ye", "--" ,"ye"]);
-            Letter_Colors.Add('C', ["l:", "pu", "--" ,"pu"]);
-            Letter_Colors.Add('D', ["l:", "or", "--" ,"or"]);
-            Letter_Colors.Add('E', ["l:", "cy", "--" ,"cy"]);
-            Letter_Colors.Add('F', ["l:", "pu", "--" ,"pu"]);
-            Letter_Colors.Add('G', ["l:", "ma", "--" ,"ma"]);
-            Letter_Colors.Add('H', ["l:", "re", "--" ,"re"]);
-            Letter_Colors.Add('I', ["l:", "bl", "--" ,"bl"]);
-            Letter_Colors.Add('J', ["l:", "gr", "||" ,"wh"]);
-            Letter_Colors.Add('K', ["l:", "gr", "||" ,"gr"]);
-            Letter_Colors.Add('L', ["l:", "gr", "||" ,"ye"]);
-            Letter_Colors.Add('M', ["l:", "gr", "||" ,"pu"]);
-            Letter_Colors.Add('N', ["l:", "gr", "||" ,"or"]);
-            Letter_Colors.Add('O', ["l:", "gr", "||" ,"cy"]);
-            Letter_Colors.Add('P', ["l:", "gr", "||" ,"pu"]);
-            Letter_Colors.Add('Q', ["l:", "gr", "||" ,"ma"]);
-            Letter_Colors.Add('R', ["l:", "gr", "||" ,"re"]);
-            Letter_Colors.Add('S', ["l:", "gr", "||" ,"bl"]);
-            Letter_Colors.Add('T', ["l:", "ye", "||" ,"wh"]);
-            Letter_Colors.Add('U', ["l:", "ye", "||" ,"gr"]);
-            Letter_Colors.Add('V', ["l:", "ye", "||" ,"ye"]);
-            Letter_Colors.Add('W', ["l:", "ye", "||" ,"pu"]);
-            Letter_Colors.Add('X', ["l:", "ye", "||" ,"or"]);
-            Letter_Colors.Add('Y', ["l:", "ye", "||" ,"cy"]);
-            Letter_Colors.Add('Z', ["l:", "ye", "||" ,"pu"]);
-
+            Letter_Colors.Add('A', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Letter_Colors.Add('B', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Letter_Colors.Add('C', [HelperVariables.LETTER_PUBLIC, HelperVariables.PURPLE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Letter_Colors.Add('D', [HelperVariables.LETTER_PUBLIC, HelperVariables.ORANGE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.ORANGE_PUBLIC]);
+            Letter_Colors.Add('E', [HelperVariables.LETTER_PUBLIC, HelperVariables.CYAN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Letter_Colors.Add('F', [HelperVariables.LETTER_PUBLIC, HelperVariables.PURPLE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Letter_Colors.Add('G', [HelperVariables.LETTER_PUBLIC, HelperVariables.MAGENTA_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Letter_Colors.Add('H', [HelperVariables.LETTER_PUBLIC, HelperVariables.RED_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Letter_Colors.Add('I', [HelperVariables.LETTER_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.BLUE_PUBLIC]);
+            Letter_Colors.Add('J', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Letter_Colors.Add('K', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Letter_Colors.Add('L', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Letter_Colors.Add('M', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Letter_Colors.Add('N', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.ORANGE_PUBLIC]);
+            Letter_Colors.Add('O', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Letter_Colors.Add('P', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Letter_Colors.Add('Q', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Letter_Colors.Add('R', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Letter_Colors.Add('S', [HelperVariables.LETTER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.BLUE_PUBLIC]);
+            Letter_Colors.Add('T', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Letter_Colors.Add('U', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Letter_Colors.Add('V', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Letter_Colors.Add('W', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Letter_Colors.Add('X', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.ORANGE_PUBLIC]);
+            Letter_Colors.Add('Y', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Letter_Colors.Add('Z', [HelperVariables.LETTER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
             return Letter_Colors;
         }
 
         public Dictionary<char, List<string>> Init_Number_Colors_Dict(){
-            Number_Colors.Add('0', ["n:", "gr", "--" ,"gr"]);
-            Number_Colors.Add('1', ["n:", "bl", "--" ,"bl"]);
-            Number_Colors.Add('2', ["n:", "ye", "--" ,"ye"]);
-            Number_Colors.Add('3', ["n:", "wh", "--" ,"wh"]);
-            Number_Colors.Add('4', ["n:", "ma", "--" ,"ma"]);
-            Number_Colors.Add('5', ["n:", "or", "--" ,"or"]);
-            Number_Colors.Add('6', ["n:", "cy", "--" ,"cy"]);
-            Number_Colors.Add('7', ["n:", "pi", "--" ,"pi"]);
-            Number_Colors.Add('8', ["n:", "re", "--" ,"re"]);
-            Number_Colors.Add('9', ["n:", "pu", "--" ,"pu"]);
+            Number_Colors.Add('0', [HelperVariables.NUMBER_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Number_Colors.Add('1', [HelperVariables.NUMBER_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.BLUE_PUBLIC]);
+            Number_Colors.Add('2', [HelperVariables.NUMBER_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Number_Colors.Add('3', [HelperVariables.NUMBER_PUBLIC, HelperVariables.WHITE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Number_Colors.Add('4', [HelperVariables.NUMBER_PUBLIC, HelperVariables.MAGENTA_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Number_Colors.Add('5', [HelperVariables.NUMBER_PUBLIC, HelperVariables.ORANGE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.ORANGE_PUBLIC]);
+            Number_Colors.Add('6', [HelperVariables.NUMBER_PUBLIC, HelperVariables.CYAN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Number_Colors.Add('7', [HelperVariables.NUMBER_PUBLIC, HelperVariables.PINK_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PINK_PUBLIC]);
+            Number_Colors.Add('8', [HelperVariables.NUMBER_PUBLIC, HelperVariables.RED_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Number_Colors.Add('9', [HelperVariables.NUMBER_PUBLIC, HelperVariables.PURPLE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
             return Number_Colors;
         }
 
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
-            Punctuation_Colors.Add('!', ["p:", "gr", "--" ,"gr"]);
-            Punctuation_Colors.Add('@', ["p:", "bl", "--" ,"bl"]);
-            Punctuation_Colors.Add('#', ["p:", "ye", "--" ,"ye"]);
-            Punctuation_Colors.Add('$', ["p:", "wh", "--" ,"wh"]);
-            Punctuation_Colors.Add('%', ["p:", "ma", "--" ,"ma"]);
-            Punctuation_Colors.Add('^', ["p:", "or", "--" ,"or"]);
-            Punctuation_Colors.Add('&', ["p:", "cy", "--" ,"cy"]);
-            Punctuation_Colors.Add('*', ["p:", "pi", "--" ,"pi"]);
-            Punctuation_Colors.Add('(', ["p:", "re", "--" ,"re"]);
-            Punctuation_Colors.Add(')', ["p:", "pu", "--" ,"pu"]);
-            Punctuation_Colors.Add('-', ["p:", "gr", "--" ,"bl"]);
-            Punctuation_Colors.Add('_', ["p:", "gr", "--" ,"ye"]);
-            Punctuation_Colors.Add('+', ["p:", "gr", "--" ,"wh"]);
-            Punctuation_Colors.Add('=', ["p:", "gr", "--" ,"ma"]);
-            Punctuation_Colors.Add('`', ["p:", "gr", "--" ,"re"]);
-            Punctuation_Colors.Add('~', ["p:", "gr", "--" ,"cy"]);
-            Punctuation_Colors.Add('[', ["p:", "gr", "--" ,"pu"]);
-            Punctuation_Colors.Add(']', ["p:", "bl", "--" ,"gr"]);
-            Punctuation_Colors.Add('{', ["p:", "bl", "--" ,"wh"]);
-            Punctuation_Colors.Add('}', ["p:", "bl", "--" ,"re"]);
-            Punctuation_Colors.Add('\\', ["p:", "bl", "--" ,"pu"]);
-            Punctuation_Colors.Add('|', ["p:", "bl", "--" ,"ye"]);
-            Punctuation_Colors.Add(';', ["p:", "bl", "--" ,"pi"]);
-            Punctuation_Colors.Add(':', ["p:", "bl", "--" ,"cy"]);
-            Punctuation_Colors.Add('\'', ["p:", "bl", "--" ,"ma"]);
-            Punctuation_Colors.Add('\"', ["p:", "ye", "--" ,"gr"]);
-            Punctuation_Colors.Add(',', ["p:", "ye", "--" ,"bl"]);
-            Punctuation_Colors.Add('<', ["p:", "ye", "--" ,"ma"]);
-            Punctuation_Colors.Add('.', ["p:", "ye", "--" ,"wh"]);
-            Punctuation_Colors.Add('>', ["p:", "ye", "--" ,"re"]);
-            Punctuation_Colors.Add('/', ["p:", "ye", "--" ,"pi"]);
-            Punctuation_Colors.Add('?', ["p:", "ye", "--" ,"cy"]);
+            Punctuation_Colors.Add(' ', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLACK_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.BLACK_PUBLIC]);
+            Punctuation_Colors.Add('!', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Punctuation_Colors.Add('@', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.BLUE_PUBLIC]);
+            Punctuation_Colors.Add('#', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Punctuation_Colors.Add('$', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.WHITE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Punctuation_Colors.Add('%', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.MAGENTA_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Punctuation_Colors.Add('^', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.ORANGE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.ORANGE_PUBLIC]);
+            Punctuation_Colors.Add('&', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.CYAN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Punctuation_Colors.Add('*', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.PINK_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PINK_PUBLIC]);
+            Punctuation_Colors.Add('(', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.RED_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Punctuation_Colors.Add(')', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.PURPLE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Punctuation_Colors.Add('-', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.BLUE_PUBLIC]);
+            Punctuation_Colors.Add('_', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Punctuation_Colors.Add('+', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Punctuation_Colors.Add('=', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Punctuation_Colors.Add('`', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Punctuation_Colors.Add('~', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Punctuation_Colors.Add('[', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.GREEN_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Punctuation_Colors.Add(']', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Punctuation_Colors.Add('{', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Punctuation_Colors.Add('}', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Punctuation_Colors.Add('\\', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PURPLE_PUBLIC]);
+            Punctuation_Colors.Add('|', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.YELLOW_PUBLIC]);
+            Punctuation_Colors.Add(';', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PINK_PUBLIC]);
+            Punctuation_Colors.Add(':', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
+            Punctuation_Colors.Add('\'', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.BLUE_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Punctuation_Colors.Add('\"', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.GREEN_PUBLIC]);
+            Punctuation_Colors.Add(',', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.BLUE_PUBLIC]);
+            Punctuation_Colors.Add('<', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.MAGENTA_PUBLIC]);
+            Punctuation_Colors.Add('.', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.WHITE_PUBLIC]);
+            Punctuation_Colors.Add('>', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.RED_PUBLIC]);
+            Punctuation_Colors.Add('/', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.PINK_PUBLIC]);
+            Punctuation_Colors.Add('?', [HelperVariables.PUNCTUATION_PUBLIC, HelperVariables.YELLOW_PUBLIC, HelperVariables.NO_BAR_PUBLIC, HelperVariables.CYAN_PUBLIC]);
             return Punctuation_Colors;
         }
 
         public Dictionary<string, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
-            Color_Codes.Add("gr", SixLabors.ImageSharp.Color.Green);
-            Color_Codes.Add("ga", SixLabors.ImageSharp.Color.Gray);
-            Color_Codes.Add("ye", SixLabors.ImageSharp.Color.Yellow);
-            Color_Codes.Add("pu", SixLabors.ImageSharp.Color.Purple);
-            Color_Codes.Add("or", SixLabors.ImageSharp.Color.Orange);
-            Color_Codes.Add("cy", SixLabors.ImageSharp.Color.Cyan);
-            Color_Codes.Add("pi", SixLabors.ImageSharp.Color.Pink);
-            Color_Codes.Add("ma", SixLabors.ImageSharp.Color.Magenta);
-            Color_Codes.Add("re", SixLabors.ImageSharp.Color.Red);
-            Color_Codes.Add("bl", SixLabors.ImageSharp.Color.Blue);
-            Color_Codes.Add("wh", SixLabors.ImageSharp.Color.White);
-            Color_Codes.Add("bk", SixLabors.ImageSharp.Color.Black);
-            Color_Codes.Add("br", SixLabors.ImageSharp.Color.Brown);
+            Color_Codes.Add(HelperVariables.GREEN_PUBLIC, SixLabors.ImageSharp.Color.Green);
+            Color_Codes.Add(HelperVariables.GRAY_PUBLIC, SixLabors.ImageSharp.Color.Gray);
+            Color_Codes.Add(HelperVariables.YELLOW_PUBLIC, SixLabors.ImageSharp.Color.Yellow);
+            Color_Codes.Add(HelperVariables.PURPLE_PUBLIC, SixLabors.ImageSharp.Color.Purple);
+            Color_Codes.Add(HelperVariables.ORANGE_PUBLIC, SixLabors.ImageSharp.Color.Orange);
+            Color_Codes.Add(HelperVariables.CYAN_PUBLIC, SixLabors.ImageSharp.Color.Cyan);
+            Color_Codes.Add(HelperVariables.PINK_PUBLIC, SixLabors.ImageSharp.Color.Pink);
+            Color_Codes.Add(HelperVariables.MAGENTA_PUBLIC, SixLabors.ImageSharp.Color.Magenta);
+            Color_Codes.Add(HelperVariables.RED_PUBLIC, SixLabors.ImageSharp.Color.Red);
+            Color_Codes.Add(HelperVariables.BLUE_PUBLIC, SixLabors.ImageSharp.Color.Blue);
+            Color_Codes.Add(HelperVariables.WHITE_PUBLIC, SixLabors.ImageSharp.Color.White);
+            Color_Codes.Add(HelperVariables.BLACK_PUBLIC, SixLabors.ImageSharp.Color.Black);
+            Color_Codes.Add(HelperVariables.BROWN_PUBLIC, SixLabors.ImageSharp.Color.Brown);
             return Color_Codes;
         }
     }
