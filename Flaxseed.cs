@@ -75,7 +75,7 @@ namespace flaxseed{
 			int letter_number = 0;
 			foreach (var letter in word){
 				float x_coordinate = letter_number * HelperVariables.Width_basis_public;
-                float actual_x_coordinate = Math.Max(HelperVariables.Width_basis_public, x_coordinate);
+                float actual_x_coordinate = Math.Max(0, x_coordinate);
 				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, actual_x_coordinate);
 				letter_number++;
 			}
