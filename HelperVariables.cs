@@ -7,24 +7,24 @@ namespace flaxseed
 
         const int height_basis = 40;
         const int width_basis = 40;
-        private const string GREEN = "gr";
-        private const string YELLOW = "ye";
-        private const string PURPLE = "pu";
-        private const string ORANGE = "or";
-        private const string CYAN = "cy";
-        private const string MAGENTA = "ma";
-        private const string RED = "re";
-        private const string BLUE = "bl";
-        private const string WHITE = "wh";
-        private const string PINK = "pi";
-        private const string BLACK = "bk";
-        private const string GRAY = "ga";
-        private const string BROWN = "br";
-        private const string NO_BAR = "--";
-        private const string BAR = "||";
-        private const string LETTER = "l:";
-        private const string NUMBER = "n:";
-        private const string PUNCTUATION = "p:";
+        const string CONST_GREEN = "gr";
+        const string CONST_YELLOW = "ye";
+        const string CONST_PURPLE = "pu";
+        const string CONST_ORANGE = "or";
+        const string CONST_CYAN = "cy";
+        const string CONST_MAGENTA = "ma";
+        const string CONST_RED = "re";
+        const string CONST_BLUE = "bl";
+        const string CONST_WHITE = "wh";
+        const string CONST_PINK = "pi";
+        const string CONST_BLACK = "bk";
+        const string CONST_GRAY = "ga";
+        const string CONST_BROWN = "br";
+        const string CONST_NO_BAR = "--";
+        const string CONST_BAR = "||";
+        const string CONST_LETTER = "l:";
+        const string CONST_NUMBER = "n:";
+        const string CONST_PUNCTUATION = "p:";
         static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
 		static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
 		static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
@@ -39,40 +39,40 @@ namespace flaxseed
 
         public static int Width_basis_public => width_basis;
 
-        public static string GREEN_PUBLIC => GREEN;
+        public static string PUBLIC_CONST_GREEN=> CONST_GREEN;
 
-        public static string YELLOW_PUBLIC => YELLOW;
+        public static string PUBLIC_CONST_YELLOW => CONST_YELLOW;
 
-        public static string PURPLE_PUBLIC => PURPLE;
+        public static string PUBLIC_CONST_PURPLE => CONST_PURPLE;
 
-        public static string ORANGE_PUBLIC => ORANGE;
+        public static string PUBLIC_CONST_ORANGE => CONST_ORANGE;
 
-        public static string CYAN_PUBLIC => CYAN;
+        public static string PUBLIC_CONST_CYAN => CONST_CYAN;
 
-        public static string MAGENTA_PUBLIC => MAGENTA;
+        public static string PUBLIC_CONST_MAGENTA => CONST_MAGENTA;
 
-        public static string RED_PUBLIC => RED;
+        public static string PUBLIC_CONST_RED => CONST_RED;
 
-        public static string BLUE_PUBLIC => BLUE;
+        public static string PUBLIC_CONST_BLUE => CONST_BLUE;
 
-        public static string WHITE_PUBLIC => WHITE;
+        public static string PUBLIC_CONST_WHITE => CONST_WHITE;
 
-        public static string PINK_PUBLIC => PINK;
+        public static string PUBLIC_CONST_PINK => CONST_PINK;
 
-        public static string BLACK_PUBLIC => BLACK;
+        public static string PUBLIC_CONST_BLACK => CONST_BLACK;
 
-        public static string GRAY_PUBLIC => GRAY;
+        public static string PUBLIC_CONST_GRAY => CONST_GRAY;
 
-        public static string BROWN_PUBLIC => BROWN;
+        public static string PUBLIC_CONST_BROWN => CONST_BROWN;
 
-        public static string NO_BAR_PUBLIC => NO_BAR;
+        public static string PUBLIC_CONST_NO_BAR => CONST_NO_BAR;
 
-        public static string BAR_PUBLIC => BAR;
+        public static string PUBLIC_CONST_BAR => CONST_BAR;
 
-        public static string LETTER_PUBLIC => LETTER;
+        public static string PUBLIC_CONST_LETTER => CONST_LETTER;
 
-        public static string NUMBER_PUBLIC => NUMBER;
+        public static string PUBLIC_CONST_NUMBER => CONST_NUMBER;
 
-        public static string PUNCTUATION_PUBLIC => PUNCTUATION;
+        public static string PUBLIC_CONST_PUNCTUATION => CONST_PUNCTUATION;
     }
 }
