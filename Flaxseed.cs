@@ -55,12 +55,17 @@ namespace flaxseed{
 			}
 			int width = 1980;
 			int height = 1020;
-			using Image<Rgba32> image = new(width, height);
+			Image<Rgba32> image = new(width, height);
 			int word_number = 0;
 			foreach (var word in colorized_input){
 				int word_height = HelperVariables.Height_basis_public * word_number;
-                Generate_Rectangle_Codes_For_Word(image, word, word_number, word_height);
-				word_number++;
+                int letter_number = 0;
+                foreach (var letter in word){
+                    float x_coordinate = letter_number * HelperVariables.Width_basis_public;
+                    image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
+                    letter_number++;
+                }
+                word_number++;
 			}
 
 						
@@ -68,25 +73,9 @@ namespace flaxseed{
 			image.Save("test.png");
 		}
 
-		// TODO: word wrap
-
-
-		static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number, float y_dim){
-			int letter_number = 0;
-			foreach (var letter in word){
-				float x_coordinate = letter_number * HelperVariables.Width_basis_public;
-				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, x_coordinate);
-				letter_number++;
-			}
-			return canvas;
-			
-		}
-
 		// TODO: calculate correct location, height, width, etc. BEFORE hand and then pass to this function. 
 		static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas,
                                                           List<string> letter,
-                                                          int word_number,
-                                                          int letter_number,
                                                           float y_dim,
                                                           float x_dim)
         {
