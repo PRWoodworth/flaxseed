@@ -53,13 +53,13 @@ namespace flaxseed{
 					longest_word = word.Count;
 				}
 			}
-			int width = HelperVariables.Width_basis  * longest_word;
-			int height = HelperVariables.Height_basis * colorized_input.Count;
+			int width = HelperVariables.Width_basis_public  * longest_word;
+			int height = HelperVariables.Height_basis_public * colorized_input.Count;
 			using Image<Rgba32> image = new(width, height);
 			int word_number = 0;
 			foreach (var word in colorized_input){
-				// TODO: calculate start point of word here?
-				Generate_Rectangle_Codes_For_Word(image, word, word_number, HelperVariables.Height_basis * word_number);
+				int word_height = HelperVariables.Height_basis_public * word_number;
+                Generate_Rectangle_Codes_For_Word(image, word, word_number, word_height);
 				word_number++;
 			}
 
@@ -74,8 +74,9 @@ namespace flaxseed{
 		static Image<Rgba32> Generate_Rectangle_Codes_For_Word(Image<Rgba32> canvas, List<List<string>> word, int word_number, float y_dim){
 			int letter_number = 0;
 			foreach (var letter in word){
-				float x_dim = Math.Max(HelperVariables.Width_basis, letter_number * HelperVariables.Width_basis);
-				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, x_dim);
+				float x_coordinate = letter_number * HelperVariables.Width_basis_public;
+                float actual_x_coordinate = Math.Max(HelperVariables.Width_basis_public, x_coordinate);
+				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, actual_x_coordinate);
 				letter_number++;
 			}
 			return canvas;
@@ -90,8 +91,8 @@ namespace flaxseed{
                                                           float y_dim,
                                                           float x_dim)
         {
-            int width = HelperVariables.Width_basis / 2;
-			int height = HelperVariables.Height_basis;
+            int width = HelperVariables.Width_basis_public / 2;
+			int height = HelperVariables.Height_basis_public;
 
 			// TODO: improve code formatting for readability here. lot of repeated stuff. 
 
