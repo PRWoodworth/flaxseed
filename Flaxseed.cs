@@ -5,7 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace flaxseed{
 	class Flaxseed{
-		public static void Main(){
+        
+
+        public static void Main(){
 			StreamReader reader = new("text_input.txt");
 			var line = reader.ReadLine();
 			var total_input = "";
@@ -47,26 +49,23 @@ namespace flaxseed{
 		}
 
 		static void Generate_Image(List<List<List<string>>> colorized_input){
-			int width = 800;
-			int height = 600;
-			Image<Rgba32> image = new(width, height);
+			Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC);
 			int word_number = 0;
 			int word_height = 0;
-			float x_coordinate_holder = 0;
-			foreach (var word in colorized_input){
-				int letter_number = 0;
-				if ((word.Count * HelperVariables.Width_basis_public) > width){
+			float x_coordinate = 0;
+			int letter_number = 0;
+            foreach (var word in colorized_input){
+				if ((word.Count * HelperVariables.Width_basis_public) + x_coordinate >= HelperVariables.CANVAS_WIDTH_PUBLIC)
+                {
 					word_height += HelperVariables.Height_basis_public;
-					word_number = 0;
+					letter_number = 0;
+                    word_number = 0;
 				}
 				foreach (var letter in word){
-					float x_coordinate = (letter_number + word_number) * HelperVariables.Width_basis_public;
-					image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
+					x_coordinate = (letter_number + word_number) * HelperVariables.Width_basis_public;
+                    image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
 					letter_number++;
-					x_coordinate_holder = x_coordinate;
-
-
-                }
+				}
 				word_number++;
 			}
 

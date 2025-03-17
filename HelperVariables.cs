@@ -29,6 +29,9 @@ namespace flaxseed
 		static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
 		static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
 
+        const int CANVAS_WIDTH = 800;
+        const int CANVAS_HEIGHT = 600;
+
         public static Dictionary<char, List<string>> Letter_Colors_Public => Letter_Colors;
 
         public static Dictionary<char, List<string>> Punctuation_Colors_Public => Punctuation_Colors;
@@ -74,5 +77,9 @@ namespace flaxseed
         public static string PUBLIC_CONST_NUMBER => CONST_NUMBER;
 
         public static string PUBLIC_CONST_PUNCTUATION => CONST_PUNCTUATION;
+
+        public static int CANVAS_WIDTH_PUBLIC => CANVAS_WIDTH;
+
+        public static int CANVAS_HEIGHT_PUBLIC => CANVAS_HEIGHT;
     }
 }
