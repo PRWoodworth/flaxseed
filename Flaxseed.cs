@@ -21,7 +21,7 @@ namespace flaxseed{
 		static List<List<List<string>>> Colorize_Text(string input){
 			// TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
 
-			String pattern = "(' ')";
+			String pattern = " ";
 			string[] split_input = Regex.Split(input, pattern);
 
 			List<List<List<string>>> input_colorization = [];
@@ -53,8 +53,8 @@ namespace flaxseed{
 					longest_word = word.Count;
 				}
 			}
-			int width = HelperVariables.Width_basis_public  * longest_word;
-			int height = HelperVariables.Height_basis_public * colorized_input.Count;
+			int width = 1980;
+			int height = 1020;
 			using Image<Rgba32> image = new(width, height);
 			int word_number = 0;
 			foreach (var word in colorized_input){
@@ -75,8 +75,7 @@ namespace flaxseed{
 			int letter_number = 0;
 			foreach (var letter in word){
 				float x_coordinate = letter_number * HelperVariables.Width_basis_public;
-                float actual_x_coordinate = Math.Max(0, x_coordinate);
-				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, actual_x_coordinate);
+				canvas = Generate_Rectangle_Code_For_Letter(canvas, letter, word_number, letter_number, y_dim, x_coordinate);
 				letter_number++;
 			}
 			return canvas;
