@@ -1,6 +1,7 @@
 ﻿// https://docs.sixlabors.com/articles/imagesharp/gettingstarted.html
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 using System.Text.RegularExpressions;
 
 namespace flaxseed{
@@ -25,7 +26,7 @@ namespace flaxseed{
 
 			String pattern = " ";
 			string[] split_input = Regex.Split(input, pattern);
-			// TODO: splitting on " " means whitespace is pseudo-preserved - it is not a character within the split input, but the output image includes it as empty space. Need a workaround. 
+			// TODO: splitting on " " means whitespace is pseudo-preserved - it is not a character within the split input, but the output image includes it as empty space. Need a workaround so it's properly denoted in the output image.
 
 			List<List<List<string>>> input_colorization = [];
 
@@ -55,6 +56,7 @@ namespace flaxseed{
 			int word_height = 0;
 			float x_coordinate = 0;
 			int letter_number = 0;
+			int largest_x_coordinate = 0;
             foreach (var word in colorized_input){
 				if ((word.Count * HelperVariables.Width_basis_public) + x_coordinate >= HelperVariables.CANVAS_WIDTH_PUBLIC)
                 {
@@ -64,14 +66,18 @@ namespace flaxseed{
 				}
 				foreach (var letter in word){
 					x_coordinate = (letter_number + word_number) * HelperVariables.Width_basis_public;
+					if (x_coordinate > largest_x_coordinate){
+						largest_x_coordinate = (int)x_coordinate;
+					}
                     image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
 					letter_number++;
 				}
 				word_number++;
 			}
 
-						
+
 			// TODO: prompt for user to specify file save location, as part of an actual app or something idk
+			// TODO: trim canvas down to size of the actual output
 			image.Save("test.png");
 		}
 
