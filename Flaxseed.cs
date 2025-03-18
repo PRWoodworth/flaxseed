@@ -1,7 +1,6 @@
 ﻿// https://docs.sixlabors.com/articles/imagesharp/gettingstarted.html
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 using System.Text.RegularExpressions;
 
 namespace flaxseed{
@@ -29,7 +28,6 @@ namespace flaxseed{
 			// TODO: splitting on " " means whitespace is pseudo-preserved - it is not a character within the split input, but the output image includes it as empty space. Need a workaround so it's properly denoted in the output image.
 
 			List<List<List<string>>> input_colorization = [];
-
 
 			foreach (var word in split_input){
 				List<List<string>> word_colorization = [];
@@ -75,13 +73,11 @@ namespace flaxseed{
 				word_number++;
 			}
 
-
 			// TODO: prompt for user to specify file save location, as part of an actual app or something idk
 			// TODO: trim canvas down to size of the actual output
 			image.Save("test.png");
 		}
 
-		// TODO: calculate correct location, height, width, etc. BEFORE hand and then pass to this function. 
 		static Image<Rgba32> Generate_Rectangle_Code_For_Letter(Image<Rgba32> canvas,
 														  List<string> letter,
 														  float y_dim,
