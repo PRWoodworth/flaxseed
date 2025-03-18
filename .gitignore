@@ -1,2 +1,5 @@
-/bin
 /obj
+/bin/Debug/net8.0/*
+/bin/Debug/net9.0/flaxseed*
+/bin/Debug/net9.0/Six*
+/bin/Release/*

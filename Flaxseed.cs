@@ -25,6 +25,7 @@ namespace flaxseed{
 
 			String pattern = " ";
 			string[] split_input = Regex.Split(input, pattern);
+			// TODO: splitting on " " means whitespace is pseudo-preserved - it is not a character within the split input, but the output image includes it as empty space. Need a workaround. 
 
 			List<List<List<string>>> input_colorization = [];
 
