@@ -25,6 +25,7 @@ namespace flaxseed{
 
 			String pattern = " ";
             // String pattern = @"(' ')";
+            // (?=' ')|(?<=' ')
 			string[] split_input = Regex.Split(input, pattern);
 			// TODO: splitting on " " means whitespace is pseudo-preserved - it is not a character within the split input, but the output image includes it as empty space. Need a workaround so it's properly denoted in the output image.
 
