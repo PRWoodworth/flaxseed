@@ -1,1 +1,1 @@
-[6:53 PM]Noxis: @Tenno Baro is loaded this weekend, worth grinding out relics and getting ducats
+text_input.txt in flaxseed/bin/Debug/net8.0
