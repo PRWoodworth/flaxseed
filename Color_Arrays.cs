@@ -118,7 +118,7 @@ namespace flaxseed {
         }
 
         public Dictionary<char, List<string>> Init_Space_Colors_Dict(){
-            Space_Colors.Add(' ', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_BLACK, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLACK]);
+            Space_Colors.Add(' ', [HelperVariables.PUBLIC_CONST_WHITESPACE, HelperVariables.PUBLIC_CONST_BLACK, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLACK]);
             return Space_Colors;
         }
 

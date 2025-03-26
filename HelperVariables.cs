@@ -25,6 +25,7 @@ namespace flaxseed
         const string CONST_LETTER = "l:";
         const string CONST_NUMBER = "n:";
         const string CONST_PUNCTUATION = "p:";
+        const string CONST_WHITESPACE = "w:";
         static readonly Dictionary<char, List<string>> Letter_Colors = new Color_Arrays().Init_Letter_Colors_Dict();
 		static readonly Dictionary<char, List<string>> Punctuation_Colors = new Color_Arrays().Init_Punctuation_Colors_Dict();
 		static readonly Dictionary<char, List<string>> Number_Colors = new Color_Arrays().Init_Number_Colors_Dict();
@@ -56,6 +57,7 @@ namespace flaxseed
         public static string PUBLIC_CONST_LETTER => CONST_LETTER;
         public static string PUBLIC_CONST_NUMBER => CONST_NUMBER;
         public static string PUBLIC_CONST_PUNCTUATION => CONST_PUNCTUATION;
+        public static string PUBLIC_CONST_WHITESPACE => CONST_WHITESPACE;
         public static int CANVAS_WIDTH_PUBLIC => CANVAS_WIDTH;
         public static int CANVAS_HEIGHT_PUBLIC => CANVAS_HEIGHT;
     }

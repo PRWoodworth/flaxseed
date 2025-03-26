@@ -15,8 +15,7 @@ namespace flaxseed{
 				total_input += line;
 				line = reader.ReadLine();
 			}
-			List<List<List<string>>> colorized_input = Colorize_Text(total_input);
-			Generate_Image(colorized_input);
+			Generate_Image(Colorize_Text(total_input));
 
 		}
 
@@ -92,7 +91,6 @@ namespace flaxseed{
 				word_number++;
 			}
 
-			// TODO: prompt for user to specify file save location, as part of an actual app or something idk
 			// TODO: trim canvas down to size of the actual output
 			image.Save("test.png");
 		}
@@ -116,7 +114,10 @@ namespace flaxseed{
 					break;
 				case "p:":
 					canvas = Shape_Generators.Generate_For_Special_Character(canvas, letter, x_dim, y_dim, width, height);
-					break;             
+					break;  
+				case "w:":
+					canvas = Shape_Generators.Generate_For_Whitespace(canvas, letter, x_dim, y_dim, width, height);
+					break;           
 				default:
 					
 					break;
