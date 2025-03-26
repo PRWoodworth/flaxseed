@@ -44,7 +44,7 @@ namespace flaxseed{
 							word_colorization.Add(HelperVariables.Number_Colors_Public[letter]);
 							break;
 						case >= 11 and <= 13:
-							word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
+							word_colorization.Add(HelperVariables.Space_Colors_Public[letter]);
 							break;
 						case >= 18 and <= 24:
 							word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);

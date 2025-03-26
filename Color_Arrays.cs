@@ -33,6 +33,7 @@ namespace flaxseed {
         private readonly Dictionary<char, List<string>> Letter_Colors = [];
         private readonly Dictionary<char, List<string>> Punctuation_Colors = [];
         private readonly Dictionary<char, List<string>> Number_Colors = [];
+        private readonly Dictionary<char, List<string>> Space_Colors = [];
         private readonly Dictionary<string, SixLabors.ImageSharp.Color> Color_Codes = [];
         
 
@@ -117,7 +118,8 @@ namespace flaxseed {
         }
 
         public Dictionary<char, List<string>> Init_Space_Colors_Dict(){
-            Punctuation_Colors.Add(' ', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_BLACK, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLACK]);
+            Space_Colors.Add(' ', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_BLACK, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLACK]);
+            return Space_Colors;
         }
 
         public Dictionary<string, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
