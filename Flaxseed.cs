@@ -51,15 +51,15 @@ namespace flaxseed{
 							break;
 						// default:
 					}
-					if(char.IsLetterOrDigit(letter)){
-						if(char.IsLetter(letter)){
-							word_colorization.Add(HelperVariables.Letter_Colors_Public[char.ToUpper(letter)]);
-						} else {
-							word_colorization.Add(HelperVariables.Number_Colors_Public[letter]);
-						}
-					} else {
-						word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
-					}
+					// if(char.IsLetterOrDigit(letter)){
+					// 	if(char.IsLetter(letter)){
+					// 		word_colorization.Add(HelperVariables.Letter_Colors_Public[char.ToUpper(letter)]);
+					// 	} else {
+					// 		word_colorization.Add(HelperVariables.Number_Colors_Public[letter]);
+					// 	}
+					// } else {
+					// 	word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
+					// }
 				}
 				input_colorization.Add(word_colorization);
 			}
