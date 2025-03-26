@@ -81,7 +81,6 @@ namespace flaxseed {
         }
 
         public Dictionary<char, List<string>> Init_Punctuation_Colors_Dict(){
-            Punctuation_Colors.Add(' ', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_BLACK, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLACK]);
             Punctuation_Colors.Add('!', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_GREEN, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_GREEN]);
             Punctuation_Colors.Add('@', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_BLUE, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLUE]);
             Punctuation_Colors.Add('#', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_YELLOW, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_YELLOW]);
@@ -115,6 +114,10 @@ namespace flaxseed {
             Punctuation_Colors.Add('/', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_YELLOW, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_PINK]);
             Punctuation_Colors.Add('?', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_YELLOW, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_CYAN]);
             return Punctuation_Colors;
+        }
+
+        public Dictionary<char, List<string>> Init_Space_Colors_Dict(){
+            Punctuation_Colors.Add(' ', [HelperVariables.PUBLIC_CONST_PUNCTUATION, HelperVariables.PUBLIC_CONST_BLACK, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLACK]);
         }
 
         public Dictionary<string, SixLabors.ImageSharp.Color> Init_Color_Codes_Dict(){
