@@ -33,32 +33,15 @@ namespace flaxseed{
 			foreach (var word in split_input){
 				List<List<string>> word_colorization = [];
 				foreach (var letter in word){
-					// TODO: test if this works. better than if statement if it does.
-					switch (char.getunicodecategory())
-					{
-						case >= 0 and <= 2:
+					if(char.IsLetterOrDigit(letter)){
+						if(char.IsLetter(letter)){
 							word_colorization.Add(HelperVariables.Letter_Colors_Public[char.ToUpper(letter)]);
-							break;
-						case 8:
+						} else {
 							word_colorization.Add(HelperVariables.Number_Colors_Public[letter]);
-							break;
-						case >= 11 and <= 13:
-							word_colorization.Add(HelperVariables.Space_Colors_Public[letter]);
-							break;
-						case >= 18 and <= 24:
-							word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
-							break;
-						// default:
+						}
+					} else {
+						word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
 					}
-					// if(char.IsLetterOrDigit(letter)){
-					// 	if(char.IsLetter(letter)){
-					// 		word_colorization.Add(HelperVariables.Letter_Colors_Public[char.ToUpper(letter)]);
-					// 	} else {
-					// 		word_colorization.Add(HelperVariables.Number_Colors_Public[letter]);
-					// 	}
-					// } else {
-					// 	word_colorization.Add(HelperVariables.Punctuation_Colors_Public[letter]);
-					// }
 				}
 				input_colorization.Add(word_colorization);
 			}
