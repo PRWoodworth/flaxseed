@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flaxseed_web.AppHost", "flaxseed_web.AppHost\flaxseed_web.AppHost.csproj", "{E10FC8FE-3C0C-41D9-AE3D-3E9FC2C81447}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flaxseed_web.ServiceDefaults", "flaxseed_web.ServiceDefaults\flaxseed_web.ServiceDefaults.csproj", "{487B72F1-73A0-F8E7-2271-47A9B39E463A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flaxseed_web.ApiService", "flaxseed_web.ApiService\flaxseed_web.ApiService.csproj", "{8D8A846C-BE88-7ADF-0676-DD3A8A62BB39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flaxseed_web.Web", "flaxseed_web.Web\flaxseed_web.Web.csproj", "{C3066EC3-A7DE-E451-5907-972686A19BF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E10FC8FE-3C0C-41D9-AE3D-3E9FC2C81447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10FC8FE-3C0C-41D9-AE3D-3E9FC2C81447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10FC8FE-3C0C-41D9-AE3D-3E9FC2C81447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10FC8FE-3C0C-41D9-AE3D-3E9FC2C81447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487B72F1-73A0-F8E7-2271-47A9B39E463A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487B72F1-73A0-F8E7-2271-47A9B39E463A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487B72F1-73A0-F8E7-2271-47A9B39E463A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487B72F1-73A0-F8E7-2271-47A9B39E463A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D8A846C-BE88-7ADF-0676-DD3A8A62BB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D8A846C-BE88-7ADF-0676-DD3A8A62BB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D8A846C-BE88-7ADF-0676-DD3A8A62BB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D8A846C-BE88-7ADF-0676-DD3A8A62BB39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3066EC3-A7DE-E451-5907-972686A19BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3066EC3-A7DE-E451-5907-972686A19BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3066EC3-A7DE-E451-5907-972686A19BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3066EC3-A7DE-E451-5907-972686A19BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98AF64BE-98A5-4695-98D4-F372DDE61F0F}
+	EndGlobalSection
+EndGlobal
