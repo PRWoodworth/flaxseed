@@ -8,7 +8,7 @@ namespace flaxseed_web.ApiService
 {
     public class FlaxcodeShapeGenerators
     {
-        readonly Dictionary<string, Color> color_dict = new ColorArrays().Init_Color_Codes_Dict();
+        static readonly Dictionary<string, Color> color_dict = new ColorArrays().Init_Color_Codes_Dict();
         public static Image<Rgba32> Generate_For_Letter(Image<Rgba32> canvas, List<string> letter, float x_dim, float y_dim, int width, int height)
         {
             RectangularPolygon color_segment_one = new(x_dim, y_dim, width, height);

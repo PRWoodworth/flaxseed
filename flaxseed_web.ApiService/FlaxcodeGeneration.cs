@@ -6,17 +6,17 @@ namespace flaxseed_web.ApiService
 {
     public class FlaxcodeGeneration
     {
-        public static Image<Rgba32> Generate_Flaxcode()
+        public static Image<Rgba32> Generate_Flaxcode(String input)
         {
-            StreamReader reader = new("text_input.txt");
-            var line = reader.ReadLine();
-            var total_input = "";
-            while (line != null)
-            {
-                total_input += line;
-                line = reader.ReadLine();
-            }
-            return Generate_Image(Colorize_Text(total_input));
+            //StreamReader reader = new("text_input.txt");
+            //var line = reader.ReadLine();
+            //var total_input = "";
+            //while (line != null)
+            //{
+            //    total_input += line;
+            //    line = reader.ReadLine();
+            //}
+            return Generate_Image(Colorize_Text(input));
         }
 
         public static List<List<List<string>>> Colorize_Text(string input)
@@ -123,5 +123,4 @@ namespace flaxseed_web.ApiService
             return canvas;
         }
     }
-}
 }

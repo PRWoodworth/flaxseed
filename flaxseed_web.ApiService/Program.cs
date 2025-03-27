@@ -31,10 +31,10 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapGet("/getflaxcode", () =>
+app.MapGet("/getflaxcode", (String input) =>
 {
-    Image<Rgba32> flaxcode = FlaxcodeGeneration.Generate_Flaxcode();
-    //TODO: call original flaxseed logic here
+    Image<Rgba32>[] flaxcode = { new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC) };
+    _ = flaxcode.Prepend(FlaxcodeGeneration.Generate_Flaxcode(input));
     return flaxcode;
 })
 .WithName("GetFlaxcode");
