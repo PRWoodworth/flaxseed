@@ -34,7 +34,7 @@ app.MapGet("/weatherforecast", () =>
 app.MapGet("/getflaxcode", (String input) =>
 {
     Image<Rgba32>[] flaxcode = { new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC) };
-    _ = flaxcode.Prepend(FlaxcodeGeneration.Generate_Flaxcode(input));
+    flaxcode[0] = FlaxcodeGeneration.Generate_Flaxcode(input);
     return flaxcode;
 })
 .WithName("GetFlaxcode");
