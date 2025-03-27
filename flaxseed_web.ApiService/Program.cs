@@ -1,3 +1,7 @@
+using flaxseed_web.ApiService;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire client integrations.
@@ -29,7 +33,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/getflaxcode", () =>
 {
-    var flaxcode = 1;
+    Image<Rgba32> flaxcode = FlaxcodeGeneration.Generate_Flaxcode();
     //TODO: call original flaxseed logic here
     return flaxcode;
 })
