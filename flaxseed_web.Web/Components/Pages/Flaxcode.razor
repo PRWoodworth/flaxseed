@@ -1,12 +1,34 @@
 ﻿@page "/flaxcode"
+@using SixLabors.ImageSharp;
+@using SixLabors.ImageSharp.PixelFormats;
 @attribute [StreamRendering(true)]
 @attribute [OutputCache(Duration = 5)]
 
 @inject FlaxcodeApiClient FlaxcodeApi
 
+<!--
+    Error preventing this page from loading:
+    InvalidOperationException: Cannot provide a value for property 'FlaxcodeApi' on type 'flaxseed_web.Web.Components.Pages.Flaxcode'. There is no registered service of type 'flaxseed_web.Web.FlaxcodeApiClient'.
+-->
+
 <h1>Flaxcode</h1>
+
+@if (flaxcode == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>flaxcode</p>
+}
 
 
 @code {
 
+    private Image<Rgba32>? flaxcode;
+
+    protected override async Task OnInitializedAsync()
+    {
+        flaxcode = await FlaxcodeApi.GetFlaxcodeAsync();
+    }
 }

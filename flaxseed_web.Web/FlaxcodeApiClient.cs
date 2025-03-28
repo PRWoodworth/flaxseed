@@ -1,23 +1,25 @@
-﻿using System.Net.Http;
-using SixLabors.ImageSharp;
+﻿using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace flaxseed_web.Web
+namespace flaxseed_web.Web;
+public class FlaxcodeApiClient(HttpClient httpClient)
 {
-    public class FlaxcodeApiClient(HttpClient httpClient)
+    public async Task<Image<Rgba32>> GetFlaxcodeAsync(CancellationToken cancellationToken = default)
     {
-        public async Task<Image<Rgba32>> GetFlaxcodeAsync(CancellationToken cancellationToken = default)
+        Image<Rgba32> generated_flaxcode = new(1,1);
+        await foreach (var flaxcode in httpClient.GetFromJsonAsAsyncEnumerable<Image<Rgba32>>("/getflaxcode", cancellationToken))
         {
-            Image<Rgba32> generated_flaxcode = new(1,1);
-            await foreach (var flaxcode in httpClient.GetFromJsonAsAsyncEnumerable< Image < Rgba32 >>("/getflaxcode", cancellationToken))
+            if (flaxcode is not null)
             {
-                if (flaxcode is not null)
-                {
-                    generated_flaxcode = flaxcode;
-                }
+                generated_flaxcode = flaxcode;
             }
-            return generated_flaxcode;
         }
+        return generated_flaxcode;
+    }
+
+    record Flaxcode(Image<Rgba32> Generated_flaxcode)
+    {
+        //TODO
     }
 }
 
