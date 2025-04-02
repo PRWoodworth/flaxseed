@@ -15,7 +15,8 @@ public class FlaxcodeApiClient(HttpClient httpClient)
                 body = flaxcode_object.FlaxcodeInput.ToString()
             });
             //TODO: this cannot be done as JSON as-is. Need to refactor sending end to provide compatible data or find a work-around on receiving end. 
-            String generated_flaxcode = await httpClient.PostAsJsonAsync("/getflaxcode", request_content).Result.Content.ReadAsStringAsync();
+            HttpResponseMessage response = await httpClient.PostAsJsonAsync("/getflaxcode", request_content);
+            String generated_flaxcode = await response.Content.ReadAsStringAsync();
             //Error preventing progress is exclusively on above line
             /*
              * System.InvalidOperationException: 
@@ -40,11 +41,6 @@ public class FlaxcodeApiClient(HttpClient httpClient)
         
         
         return flaxcode_object;
-    }
-
-    record Flaxcode(Image<Rgba32> Generated_flaxcode)
-    {
-        //TODO
     }
 }
 

@@ -7,9 +7,8 @@ using System.Text.Json.Serialization;
 
 public class FlaxcodeModel
 {
-    public string ? FlaxcodeInput { get; set; }
-    public Image<Rgba32> ? FlaxcodeOutput { get; set; }
-    public string ? FlaxcodeSerialized { get; set; }
+    public string FlaxcodeInput { get; set; }
+    public Image<Rgba32> FlaxcodeOutput { get; set; }
     public FlaxcodeModel(string input) { FlaxcodeInput = input; }
     public FlaxcodeModel( ) { }
 }

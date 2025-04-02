@@ -13,23 +13,23 @@
 <h1>Flaxcode</h1>
 @* TODO: text entry goes here.*@
 
-@if (flaxcode_model.FlaxcodeOutput == null)
+@if (flaxcodeModel.FlaxcodeOutput == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <p>@flaxcode_model.FlaxcodeInput</p>
-    <p>@flaxcode_model.FlaxcodeOutput</p>
+    <p>@flaxcodeModel.FlaxcodeInput</p>
+    <p>@flaxcodeModel.FlaxcodeOutput</p>
 }
 
 
 @code {
 
-    private FlaxcodeModel flaxcode_model = new FlaxcodeModel();
+    private FlaxcodeModel flaxcodeModel = new FlaxcodeModel(input: "");
 
     protected override async Task OnInitializedAsync()
     {
-        flaxcode_model = await FlaxcodeApi.GetFlaxcodeAsync(new FlaxcodeModel("hardcoded test input"));
+        flaxcodeModel = await FlaxcodeApi.GetFlaxcodeAsync(flaxcodeModel);
     }
 }
