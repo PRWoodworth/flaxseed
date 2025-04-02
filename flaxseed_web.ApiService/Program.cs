@@ -1,6 +1,8 @@
 using flaxseed_web.ApiService;
+using flaxseed_web.Web.Models;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,11 +33,10 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapGet("/getflaxcode", (String input) =>
+app.MapGet("/getflaxcode", (FlaxcodeModel flaxcode_model) =>
 {
-    Image<Rgba32>[] flaxcode = { new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC) };
-    flaxcode[0] = FlaxcodeGeneration.Generate_Flaxcode(input);
-    return flaxcode;
+    flaxcode_model.FlaxcodeOutput = FlaxcodeGeneration.Generate_Flaxcode(flaxcode_model.FlaxcodeInput);
+    return flaxcode_model;
 })
 .WithName("GetFlaxcode");
 

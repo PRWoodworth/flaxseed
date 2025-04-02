@@ -1,4 +1,6 @@
 ﻿@page "/flaxcode"
+@using flaxseed_web.Web;
+@using flaxseed_web.Web.Models;
 @using SixLabors.ImageSharp;
 @using SixLabors.ImageSharp.PixelFormats;
 @attribute [StreamRendering(true)]
@@ -6,29 +8,37 @@
 
 @inject FlaxcodeApiClient FlaxcodeApi
 
+<PageTitle>Flaxcode</PageTitle>
+
 <!--
     Error preventing this page from loading:
     InvalidOperationException: Cannot provide a value for property 'FlaxcodeApi' on type 'flaxseed_web.Web.Components.Pages.Flaxcode'. There is no registered service of type 'flaxseed_web.Web.FlaxcodeApiClient'.
 -->
 
 <h1>Flaxcode</h1>
+<form method="post">
 
-@if (flaxcode == null)
+</form>
+<p>
+
+</p>
+
+@if (flaxcode_model.FlaxcodeOutput == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <p>flaxcode</p>
+    <p>@flaxcode_model.FlaxcodeOutput</p>
 }
 
 
 @code {
 
-    private Image<Rgba32>? flaxcode;
+    private FlaxcodeModel flaxcode_model;
 
     protected override async Task OnInitializedAsync()
     {
-        flaxcode = await FlaxcodeApi.GetFlaxcodeAsync();
+        flaxcode_model = await FlaxcodeApi.GetFlaxcodeAsync(new FlaxcodeModel("hardcoded test input"));
     }
 }

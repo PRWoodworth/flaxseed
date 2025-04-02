@@ -1,20 +1,32 @@
-﻿using SixLabors.ImageSharp;
+﻿using flaxseed_web.Web.Models;
+using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
 namespace flaxseed_web.Web;
 public class FlaxcodeApiClient(HttpClient httpClient)
 {
-    public async Task<Image<Rgba32>> GetFlaxcodeAsync(CancellationToken cancellationToken = default)
+    public async Task<FlaxcodeModel> GetFlaxcodeAsync(FlaxcodeModel flaxcode_object, CancellationToken cancellationToken = default)
     {
-        Image<Rgba32> generated_flaxcode = new(1,1);
-        await foreach (var flaxcode in httpClient.GetFromJsonAsAsyncEnumerable<Image<Rgba32>>("/getflaxcode", cancellationToken))
+        try
         {
-            if (flaxcode is not null)
+            Image<Rgba32> generatedFlaxcode = new(1, 1);
+            await foreach (var flaxcode in httpClient.GetFromJsonAsAsyncEnumerable<Image<Rgba32>>("/getflaxcode", cancellationToken))
             {
-                generated_flaxcode = flaxcode;
+                if (flaxcode != null)
+                {
+                    generatedFlaxcode = flaxcode;
+                }
             }
+            flaxcode_object.FlaxcodeOutput = generatedFlaxcode;
         }
-        return generated_flaxcode;
+        catch (Exception)
+        {
+
+            throw;
+        }
+        
+        
+        return flaxcode_object;
     }
 
     record Flaxcode(Image<Rgba32> Generated_flaxcode)

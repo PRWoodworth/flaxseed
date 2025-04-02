@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\flaxseed_web.ServiceDefaults\flaxseed_web.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\flaxseed_web.Web\flaxseed_web.Web.csproj" />
   </ItemGroup>
 
 </Project>
