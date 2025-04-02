@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Collections.Generic;
+using System.Text.Json;
 using flaxseed_web.Web.Models;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
@@ -10,11 +11,11 @@ public class FlaxcodeApiClient(HttpClient httpClient)
     {
         try
         {
-            String request_content = JsonSerializer.Serialize(new
+            var request_values = new Dictionary<string, string>
             {
-                body = flaxcode_object.FlaxcodeInput.ToString()
-            });
-            //TODO: this cannot be done as JSON as-is. Need to refactor sending end to provide compatible data or find a work-around on receiving end. 
+                {"input", flaxcode_object.FlaxcodeInput}
+            };
+            FormUrlEncodedContent request_content = new FormUrlEncodedContent(request_values); 
             HttpResponseMessage response = await httpClient.PostAsJsonAsync("/getflaxcode", request_content);
             String generated_flaxcode = await response.Content.ReadAsStringAsync();
             //Error preventing progress is exclusively on above line
