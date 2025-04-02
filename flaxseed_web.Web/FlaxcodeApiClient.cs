@@ -1,18 +1,22 @@
-﻿using flaxseed_web.Web.Models;
+﻿using System.Text.Json;
+using flaxseed_web.Web.Models;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
 namespace flaxseed_web.Web;
 public class FlaxcodeApiClient(HttpClient httpClient)
 {
-    public async Task<FlaxcodeModel> GetFlaxcodeAsync(FlaxcodeModel flaxcode_object, CancellationToken cancellationToken = default)
+    public async Task<FlaxcodeModel> GetFlaxcodeAsync(FlaxcodeModel flaxcode_object)
     {
         try
         {
+            String request_content = JsonSerializer.Serialize(new
+            {
+                body = flaxcode_object.FlaxcodeInput.ToString()
+            });
             //TODO: this cannot be done as JSON as-is. Need to refactor sending end to provide compatible data or find a work-around on receiving end. 
-            String generated_flaxcode = await httpClient.GetStringAsync("/getflaxcode", cancellationToken);
-        //Error preventing progress is exclusively on above line
-        //TODO: this isn't actually sending a request body i think. i should probably fix that. 
+            String generated_flaxcode = await httpClient.PostAsJsonAsync("/getflaxcode", request_content).Result.Content.ReadAsStringAsync();
+            //Error preventing progress is exclusively on above line
             /*
              * System.InvalidOperationException: 
              * The type 'System.ReadOnlySpan`1[System.Byte]' of property 'Preamble' on type 'System.Text.Encoding' is invalid for serialization or deserialization 
