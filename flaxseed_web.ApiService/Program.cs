@@ -2,6 +2,8 @@ using flaxseed_web.ApiService;
 using flaxseed_web.Web.Models;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Png;
+using System.Text.Json;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,7 +38,7 @@ app.MapGet("/weatherforecast", () =>
 app.MapGet("/getflaxcode", (FlaxcodeModel flaxcode_model) =>
 {
     flaxcode_model.FlaxcodeOutput = FlaxcodeGeneration.Generate_Flaxcode(flaxcode_model.FlaxcodeInput);
-    return flaxcode_model;
+    return JsonSerializer.Serialize(flaxcode_model);
 })
 .WithName("GetFlaxcode");
 

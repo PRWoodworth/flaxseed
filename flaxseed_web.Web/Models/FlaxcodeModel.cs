@@ -5,6 +5,7 @@ public class FlaxcodeModel
 {
     public string ? FlaxcodeInput { get; set; }
     public Image<Rgba32> ? FlaxcodeOutput { get; set; }
+    public string ? FlaxcodeBase64 { get; set; }
     public FlaxcodeModel(string input) { FlaxcodeInput = input; }
     public FlaxcodeModel( ) { }
 }
