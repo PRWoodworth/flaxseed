@@ -15,9 +15,9 @@ public class FlaxcodeApiClient(HttpClient httpClient)
             {
                 {"input", flaxcode_object.FlaxcodeInput}
             };
-            FormUrlEncodedContent request_content = new FormUrlEncodedContent(request_values); 
-            HttpResponseMessage response = await httpClient.PostAsJsonAsync("/getflaxcode", request_content);
-            String generated_flaxcode = await response.Content.ReadAsStringAsync();
+            FormUrlEncodedContent request_content = new(request_values);
+            var response = await httpClient.PostAsJsonAsync("/getflaxcode", request_content);
+            var generated_flaxcode = await response.Content.ReadAsStringAsync();
             //Error preventing progress is exclusively on above line
             /*
              * System.InvalidOperationException: 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.PixelFormats;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,10 +38,10 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapPost("/getflaxcode", async ([FromBody]FlaxcodeModel flaxcode_model) =>
+app.MapPost("/getflaxcode", async ([FromBody]String flaxcode_input) =>
 {
-    flaxcode_model.FlaxcodeOutput = FlaxcodeGeneration.Generate_Flaxcode(flaxcode_model.FlaxcodeInput);
-    return flaxcode_model.FlaxcodeOutput.ToBase64String(PngFormat.Instance);
+    Image <Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(flaxcode_input);
+    return output.ToBase64String(PngFormat.Instance);
 })
 .WithName("GetFlaxcode");
 
