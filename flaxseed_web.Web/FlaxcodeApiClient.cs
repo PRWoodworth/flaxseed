@@ -10,6 +10,7 @@ public class FlaxcodeApiClient(HttpClient httpClient)
         try
         {
             Image<Rgba32> generatedFlaxcode = new(1, 1);
+            //TODO: this cannot be done as JSON as-is. Need to refactor sending end to provide compatible data or find a work-around on receiving end. 
             await foreach (var flaxcode in httpClient.GetFromJsonAsAsyncEnumerable<Image<Rgba32>>("/getflaxcode", cancellationToken))
             {
                 if (flaxcode != null)

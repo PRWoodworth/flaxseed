@@ -12,16 +12,11 @@
 
 <!--
     Error preventing this page from loading:
-    InvalidOperationException: Cannot provide a value for property 'FlaxcodeApi' on type 'flaxseed_web.Web.Components.Pages.Flaxcode'. There is no registered service of type 'flaxseed_web.Web.FlaxcodeApiClient'.
+    InvalidOperationException: The type 'System.ReadOnlySpan`1[System.Byte]' of property 'Preamble' on type 'System.Text.Encoding' is invalid for serialization or deserialization because it is a pointer type, is a ref struct, or contains generic parameters that have not been replaced by specific types.
 -->
 
 <h1>Flaxcode</h1>
-<form method="post">
-
-</form>
-<p>
-
-</p>
+@* TODO: text entry goes here.*@
 
 @if (flaxcode_model.FlaxcodeOutput == null)
 {
