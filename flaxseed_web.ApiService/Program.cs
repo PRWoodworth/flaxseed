@@ -1,9 +1,11 @@
 using flaxseed_web.ApiService;
 using flaxseed_web.Web.Models;
-using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Png;
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Formats.Png;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,10 +37,10 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapGet("/getflaxcode", (FlaxcodeModel flaxcode_model) =>
+app.MapPost("/getflaxcode", async ([FromBody]FlaxcodeModel flaxcode_model) =>
 {
     flaxcode_model.FlaxcodeOutput = FlaxcodeGeneration.Generate_Flaxcode(flaxcode_model.FlaxcodeInput);
-    return JsonSerializer.Serialize(flaxcode_model);
+    return flaxcode_model.FlaxcodeOutput.ToBase64String(PngFormat.Instance);
 })
 .WithName("GetFlaxcode");
 
@@ -49,9 +51,4 @@ app.Run();
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
-
-record Flaxcode(Image<Rgba32> Generated_flaxcode)
-{
-    //TODO
 }

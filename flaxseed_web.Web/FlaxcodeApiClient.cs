@@ -10,7 +10,15 @@ public class FlaxcodeApiClient(HttpClient httpClient)
         try
         {
             //TODO: this cannot be done as JSON as-is. Need to refactor sending end to provide compatible data or find a work-around on receiving end. 
-            FlaxcodeModel generated_flaxcode = await httpClient.GetFromJsonAsync<FlaxcodeModel>("/getflaxcode", cancellationToken: cancellationToken);
+            String generated_flaxcode = await httpClient.GetStringAsync("/getflaxcode", cancellationToken: cancellationToken);
+            byte[] bytes = Convert.FromBase64String(generated_flaxcode);
+            Image<Rgba32> image;
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                image = (Image<Rgba32>)Image.Load(ms);
+            }
+
+            flaxcode_object.FlaxcodeOutput = image;
         }
         catch (Exception)
         {
