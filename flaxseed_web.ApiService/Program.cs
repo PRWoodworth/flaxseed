@@ -1,12 +1,9 @@
 using flaxseed_web.ApiService;
-using flaxseed_web.Web.Models;
 using SixLabors.ImageSharp;
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
+using System.Text.Json;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,9 +35,12 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapPost("/getflaxcode", async ([FromBody]String flaxcode_input) =>
+app.MapPost("/getflaxcode", ([FromBody]String flaxcode_input) =>
+//Microsoft.AspNetCore.Http.BadHttpRequestException: Required parameter "string json_input" was not provided from query string.
+//input at this point: "{\"FlaxcodeInput\":\"hard coded text input\"}" 
 {
-    Image <Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(flaxcode_input);
+    var deserialized_input = JsonSerializer.Deserialize<String>(flaxcode_input);
+    Image <Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(deserialized_input);
     return output.ToBase64String(PngFormat.Instance);
 })
 .WithName("GetFlaxcode");

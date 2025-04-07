@@ -2,13 +2,16 @@
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 [JsonDerivedType(typeof(FlaxcodeModel), typeDiscriminator: "base")]
 
 public class FlaxcodeModel
 {
-    public string FlaxcodeInput { get; set; }
+    [BindProperty]
+    public string FlaxcodeInputString { get; set; }
+    [BindProperty]
     public Image<Rgba32> FlaxcodeOutput { get; set; }
-    public FlaxcodeModel(string input) { FlaxcodeInput = input; }
+    public FlaxcodeModel(string input) { FlaxcodeInputString = input; }
     public FlaxcodeModel( ) { }
 }
