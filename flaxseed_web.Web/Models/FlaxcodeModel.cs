@@ -11,6 +11,8 @@ public class FlaxcodeModel
     [BindProperty]
     public string FlaxcodeInputString { get; set; }
     [BindProperty]
+    public string FlaxcodeBase64 { get; set; }
+    [BindProperty]
     public Image<Rgba32> FlaxcodeOutput { get; set; }
     public FlaxcodeModel(string input) { FlaxcodeInputString = input; }
     public FlaxcodeModel( ) { }

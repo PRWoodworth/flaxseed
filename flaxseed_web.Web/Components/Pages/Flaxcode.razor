@@ -7,23 +7,33 @@
 @attribute [OutputCache(Duration = 5)]
 
 @inject FlaxcodeApiClient FlaxcodeApi
+@{
+    var imgsrc = "";
+}
 
 <PageTitle>Flaxcode</PageTitle>
 
 <h1>Flaxcode</h1>
 @* TODO: text entry goes here.*@
 
-@if (flaxcodeModel.FlaxcodeOutput == null)
+@if (flaxcodeModel.FlaxcodeBase64 == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <p>@flaxcodeModel.FlaxcodeInputString</p>
-    <img src = "@(flaxcodeModel.FlaxcodeOutput).png"/>
-    @*
-        shows as a missing-image placeholder now. isn't working right probably due to the way i'm referencing the image?
-    *@
+    imgsrc = flaxcodeModel.FlaxcodeBase64;
+    
+    <div>
+        @*
+            TODO: put an input text box here. pass its input value into the FlaxcodeModel below.
+        *@
+        <p>@flaxcodeModel.FlaxcodeInputString</p>
+        
+        <img src="@imgsrc" />
+    </div>
+    
+
 }
 
 

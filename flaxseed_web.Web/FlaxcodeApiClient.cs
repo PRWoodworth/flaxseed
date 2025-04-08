@@ -15,13 +15,7 @@ public class FlaxcodeApiClient(HttpClient httpClient)
         {
             var request_content_serialized = JsonSerializer.Serialize(flaxcode_object.FlaxcodeInputString);
             var response = await httpClient.PostAsJsonAsync("/getflaxcode", request_content_serialized);
-            var generated_flaxcode = await response.Content.ReadAsStringAsync();
-
-            var regex = new Regex("data:image/(.*);base64,");
-            generated_flaxcode = (String)regex.Replace(generated_flaxcode, "");
-            flaxcode_object.FlaxcodeOutput = (Image<Rgba32>)Image.Load(Convert.FromBase64String(generated_flaxcode));
-
-
+            flaxcode_object.FlaxcodeBase64 = await response.Content.ReadAsStringAsync();
         }
         catch (Exception)
         {
