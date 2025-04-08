@@ -20,8 +20,10 @@
 else
 {
     <p>@flaxcodeModel.FlaxcodeInputString</p>
-    <image>@flaxcodeModel.FlaxcodeOutput</image>
-    @* TODO: get this to actually display the image. hopefully i dont need to actually save the image locally to do so.*@
+    <img src = "@(flaxcodeModel.FlaxcodeOutput).png"/>
+    @*
+        shows as a missing-image placeholder now. isn't working right probably due to the way i'm referencing the image?
+    *@
 }
 
 
