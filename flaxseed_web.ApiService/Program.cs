@@ -36,12 +36,11 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 app.MapPost("/getflaxcode", ([FromBody]String flaxcode_input) =>
-//Microsoft.AspNetCore.Http.BadHttpRequestException: Required parameter "string json_input" was not provided from query string.
-//input at this point: "{\"FlaxcodeInput\":\"hard coded text input\"}" 
 {
     var deserialized_input = JsonSerializer.Deserialize<String>(flaxcode_input);
     Image <Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(deserialized_input);
-    return output.ToBase64String(PngFormat.Instance);
+    String base64output = output.ToBase64String(PngFormat.Instance);
+    return base64output;
 })
 .WithName("GetFlaxcode");
 

@@ -13,7 +13,8 @@ public class FlaxcodeApiClient(HttpClient httpClient)
             var request_content_serialized = JsonSerializer.Serialize(flaxcode_object.FlaxcodeInputString);
             var response = await httpClient.PostAsJsonAsync("/getflaxcode", request_content_serialized);
             var generated_flaxcode = await response.Content.ReadAsStringAsync();
-            byte[] bytes = Convert.FromBase64String(generated_flaxcode);
+            var bytes = Convert.FromBase64String(generated_flaxcode);
+            //System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
             Image<Rgba32> image;
             using (MemoryStream ms = new(bytes))
             {
