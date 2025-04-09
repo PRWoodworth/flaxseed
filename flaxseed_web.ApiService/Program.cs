@@ -1,9 +1,9 @@
+using System.Text.Json;
 using flaxseed_web.ApiService;
-using SixLabors.ImageSharp;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
-using System.Text.Json;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,10 +35,10 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapPost("/getflaxcode", ([FromBody]String flaxcode_input) =>
+app.MapPost("/getflaxcode", ([FromBody] String flaxcode_input) =>
 {
     var deserialized_input = JsonSerializer.Deserialize<String>(flaxcode_input);
-    Image <Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(deserialized_input);
+    Image<Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(deserialized_input);
     String base64output = output.ToBase64String(PngFormat.Instance);
     return base64output;
 })

@@ -1,6 +1,6 @@
-﻿using SixLabors.ImageSharp.PixelFormats;
+﻿using System.Text.RegularExpressions;
 using SixLabors.ImageSharp;
-using System.Text.RegularExpressions;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace flaxseed_web.ApiService
 {
@@ -8,24 +8,13 @@ namespace flaxseed_web.ApiService
     {
         public static Image<Rgba32> Generate_Flaxcode(String input)
         {
-            //StreamReader reader = new("text_input.txt");
-            //var line = reader.ReadLine();
-            //var total_input = "";
-            //while (line != null)
-            //{
-            //    total_input += line;
-            //    line = reader.ReadLine();
-            //}
             return Generate_Image(Colorize_Text(input));
         }
 
         public static List<List<List<string>>> Colorize_Text(string input)
         {
-            // TODO: make actual window to get input from user. might need to be a web UI rather than local app. 
 
             String pattern = " ";
-            // String pattern = @"(' ')";
-            // (?=' ')|(?<=' ')
             string[] split_input = Regex.Split(input, pattern);
             // TODO: splitting on " " means whitespace is pseudo-preserved - it is not a character within the split input, but the output image includes it as empty space. Need a workaround so it's properly denoted in the output image.
 

@@ -1,10 +1,5 @@
 ﻿using System.Text.Json;
-using System.Text.RegularExpressions;
 using flaxseed_web.Web.Models;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats;
-using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace flaxseed_web.Web;
 public class FlaxcodeApiClient(HttpClient httpClient)
@@ -22,8 +17,8 @@ public class FlaxcodeApiClient(HttpClient httpClient)
 
             throw;
         }
-        
-        
+
+
         return flaxcode_object;
     }
 }
