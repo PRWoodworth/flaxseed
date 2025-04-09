@@ -16,6 +16,12 @@
 <h1>Flaxcode</h1>
 @* TODO: text entry goes here.*@
 
+@{
+    if(IsPost){
+        string textInput = Request.Form["TextInput"];
+    }
+}
+
 @if (flaxcodeModel.FlaxcodeBase64 == null)
 {
     <p><em>Loading...</em></p>
@@ -28,8 +34,18 @@ else
         @*
             TODO: put an input text box here. pass its input value into the FlaxcodeModel below.
         *@
+        <form method="post">
+            <div>
+                <label for="TextInput">Text Input:</label>
+                <input type="text" name="TextInput" value="" />
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <input type="submit" value="Submit" class="submit" />
+            </div>
+        </form>
         <p>@flaxcodeModel.FlaxcodeInputString</p>
-        
+            
         <img src="@imgsrc" />
     </div>
     
@@ -39,7 +55,7 @@ else
 
 @code {
 
-    private FlaxcodeModel flaxcodeModel = new FlaxcodeModel(input: "hard coded text input");
+    private FlaxcodeModel flaxcodeModel = new FlaxcodeModel(input: textInput);
 
     protected override async Task OnInitializedAsync()
     {
