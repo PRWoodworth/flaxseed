@@ -7,58 +7,59 @@
 @attribute [OutputCache(Duration = 5)]
 
 @inject FlaxcodeApiClient FlaxcodeApi
-@{
-    var imgsrc = "";
-}
 
-<PageTitle>Flaxcode</PageTitle>
+<head>
+    <PageTitle>Flaxcode</PageTitle>
+</head>
+
 
 <h1>Flaxcode</h1>
-@* TODO: text entry goes here.*@
-
-@{
-    if(IsPost){
-        string textInput = Request.Form["TextInput"];
+<body>
+     <div> 
+         <form method="post" @onsubmit="Submit" @formname="flaxcode-input-form"> 
+             <AntiforgeryToken /> 
+             <div> 
+                 <label> 
+                     Identifier:
+                    <InputText @bind-Value="Model!.input" />
+                </label> 
+             </div> 
+             <div> 
+                 <button type="submit">Submit</button> 
+             </div> 
+         </form> 
+     </div> 
+    @if (flaxcodeModel.FlaxcodeBase64 == null)
+    {
+        <p><em>Loading...</em></p>
     }
-}
+    else
+    {
+        var imgsrc = flaxcodeModel.FlaxcodeBase64;
 
-@if (flaxcodeModel.FlaxcodeBase64 == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    imgsrc = flaxcodeModel.FlaxcodeBase64;
-    
-    <div>
-        @*
-            TODO: put an input text box here. pass its input value into the FlaxcodeModel below.
-        *@
-        <form method="post">
-            <div>
-                <label for="TextInput">Text Input:</label>
-                <input type="text" name="TextInput" value="" />
-            </div>
-            <div>
-                <label>&nbsp;</label>
-                <input type="submit" value="Submit" class="submit" />
-            </div>
-        </form>
         <p>@flaxcodeModel.FlaxcodeInputString</p>
-            
+
         <img src="@imgsrc" />
-    </div>
-    
 
-}
-
+    }
+</body>
 
 @code {
+   
 
-    private FlaxcodeModel flaxcodeModel = new FlaxcodeModel(input: textInput);
+    [SupplyParameterFromForm]
+    private FlaxcodeInputHolder? Model { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
+    protected override void OnInitialized() => Model ??= new();
+
+    private FlaxcodeModel flaxcodeModel = new FlaxcodeModel(input: "");
+    private async Task Submit(){
+        flaxcodeModel.FlaxcodeInputString = Model.input;
         flaxcodeModel = await FlaxcodeApi.GetFlaxcodeAsync(flaxcodeModel);
+    }
+
+    public class FlaxcodeInputHolder
+    {
+        public string? input { get; set; }
     }
 }

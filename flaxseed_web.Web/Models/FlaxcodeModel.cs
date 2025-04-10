@@ -12,4 +12,5 @@ public class FlaxcodeModel
     public string FlaxcodeBase64 { get; set; }
     public FlaxcodeModel(string input) { FlaxcodeInputString = input; }
     public FlaxcodeModel() { }
+
 }
