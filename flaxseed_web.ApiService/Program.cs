@@ -38,6 +38,7 @@ app.MapGet("/weatherforecast", () =>
 app.MapPost("/getflaxcode", ([FromBody] String flaxcode_input) =>
 {
     var deserialized_input = JsonSerializer.Deserialize<String>(flaxcode_input);
+    deserialized_input ??= "";
     Image<Rgba32> output = FlaxcodeGeneration.Generate_Flaxcode(deserialized_input);
     String base64output = output.ToBase64String(PngFormat.Instance);
     return base64output;

@@ -45,7 +45,7 @@
 </body>
 
 @code {
-   
+
 
     [SupplyParameterFromForm]
     private FlaxcodeInputHolder? Model { get; set; }
@@ -54,6 +54,10 @@
 
     private FlaxcodeModel flaxcodeModel = new FlaxcodeModel(input: "");
     private async Task Submit(){
+        if(Model == null){
+            //very brute force way of ensuring it's not null and appeasing the compiler
+            Model ??= new();
+        }
         flaxcodeModel.FlaxcodeInputString = Model.input;
         flaxcodeModel = await FlaxcodeApi.GetFlaxcodeAsync(flaxcodeModel);
     }

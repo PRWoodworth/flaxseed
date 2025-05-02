@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 public class FlaxcodeModel
 {
     [BindProperty]
-    public string FlaxcodeInputString { get; set; }
+    public string? FlaxcodeInputString { get; set; }
     [BindProperty]
-    public string FlaxcodeBase64 { get; set; }
+    public string? FlaxcodeBase64 { get; set; }
     public FlaxcodeModel(string input) { FlaxcodeInputString = input; }
     public FlaxcodeModel() { }
 
