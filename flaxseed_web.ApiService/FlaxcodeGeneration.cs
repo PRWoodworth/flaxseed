@@ -71,6 +71,7 @@ namespace flaxseed_web.ApiService
                         largest_x_coordinate = (int)x_coordinate;
                     }
                     image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
+                    
                     letter_number++;
                 }
                 word_number++;
