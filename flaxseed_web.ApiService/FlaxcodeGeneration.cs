@@ -57,7 +57,7 @@ namespace flaxseed_web.ApiService
             Console.Out.WriteLine(HelperVariables.CANVAS_WIDTH_PUBLIC);
             Console.Out.WriteLine(HelperVariables.Height_basis_public);
             // TODO: mostly works! output image has whitespace = to number of rows. also why is it duplicating that entire UI element??????? 
-            int canvas_height_alternative = ((HelperVariables.CANVAS_WIDTH_PUBLIC / Math.Ceiling(colorized_input.Count * HelperVariables.Width_basis_public))) * HelperVariables.Height_basis_public;
+            int canvas_height_alternative = (HelperVariables.CANVAS_WIDTH_PUBLIC / Math.Ceiling((double)colorized_input.Count * HelperVariables.Width_basis_public)) * HelperVariables.Height_basis_public;
             Console.Out.WriteLine(canvas_height_alternative);
             Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, canvas_height_alternative);
             int word_number = 0;
