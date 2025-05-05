@@ -52,7 +52,7 @@ namespace flaxseed_web.ApiService
 
         public static Image<Rgba32> Generate_Image(List<List<List<string>>> colorized_input)
         {
-            Console.Out.WriteLine(colorized_input[1].Count);
+            Console.Out.WriteLine(colorized_input[0].Count);
             Console.Out.WriteLine(HelperVariables.Width_basis_public);
             Console.Out.WriteLine(HelperVariables.CANVAS_WIDTH_PUBLIC);
             Console.Out.WriteLine(HelperVariables.Height_basis_public);
