@@ -56,7 +56,7 @@ namespace flaxseed_web.ApiService
             Console.Out.WriteLine(HelperVariables.Width_basis_public);
             Console.Out.WriteLine(HelperVariables.CANVAS_WIDTH_PUBLIC);
             Console.Out.WriteLine(HelperVariables.Height_basis_public);
-            int canvas_height_alternative = ((colorized_input.Count * HelperVariables.Width_basis_public)  / HelperVariables.CANVAS_WIDTH_PUBLIC) * HelperVariables.Height_basis_public;
+            int canvas_height_alternative = (HelperVariables.CANVAS_WIDTH_PUBLIC / (colorized_input.Count * HelperVariables.Width_basis_public)) * HelperVariables.Height_basis_public;
             // Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC);
             Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, canvas_height_alternative);
             int word_number = 0;
