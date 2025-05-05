@@ -13,22 +13,24 @@
 </head>
 
 
-<h1>Flaxcode</h1>
+
 <body>
-     <div> 
-         <form method="post" @onsubmit="Submit" @formname="flaxcode-input-form"> 
-             <AntiforgeryToken /> 
-             <div> 
-                 <label> 
-                     Identifier:
+    <h1>Flaxcode</h1>
+    <p>test</p>
+    <div> 
+        <form method="post" @onsubmit="Submit" @formname="flaxcode-input-form"> 
+            <AntiforgeryToken /> 
+            <div> 
+                <label> 
+                    Identifier:
                     <InputText @bind-Value="Model!.input" />
                 </label> 
-             </div> 
-             <div> 
-                 <button type="submit">Submit</button> 
-             </div> 
-         </form> 
-     </div> 
+            </div> 
+            <div> 
+                <button type="submit">Submit</button> 
+            </div> 
+        </form> 
+    </div> 
     @if (flaxcodeModel.FlaxcodeBase64 == null)
     {
         <p><em>Loading...</em></p>
