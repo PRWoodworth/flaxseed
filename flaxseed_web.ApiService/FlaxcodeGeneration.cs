@@ -43,12 +43,16 @@ namespace flaxseed_web.ApiService
                 }
                 input_colorization.Add(word_colorization);
             }
+            // TODO: pre-calculate the "correct" canvas size for the given input. minimum canvas width = largest single word.
+            // 
+
 
             return input_colorization;
         }
 
         public static Image<Rgba32> Generate_Image(List<List<List<string>>> colorized_input)
         {
+            int canvas_height = ((colorized_input.Count * HelperVariables.Width_basis_public)  / HelperVariables.CANVAS_WIDTH_PUBLIC) * HelperVariables.Height_basis_public;
             Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC);
             int word_number = 0;
             int word_height = 0;
@@ -76,8 +80,6 @@ namespace flaxseed_web.ApiService
                 }
                 word_number++;
             }
-
-            // TODO: trim canvas down to size of the actual output
             return image;
         }
 
