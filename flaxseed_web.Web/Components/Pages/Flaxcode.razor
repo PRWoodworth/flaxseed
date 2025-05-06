@@ -24,10 +24,9 @@
                     Input:
                     <InputText @bind-Value="Model!.input" />
                 </label>  *@
-                <label> 
-                    Input:
-                    <textarea @name="textarea" @style="width:250px;height:150px;" @bind-Value="Model!.input"></textarea>
-                </label> 
+                <label>Input: </label> 
+                <textarea @name="textarea" @style="width:250px;height:150px;" @bind="Model!.input"></textarea>
+                
                 
             </div> 
             <div> 
