@@ -24,6 +24,11 @@
                     Identifier:
                     <InputText @bind-Value="Model!.input" />
                 </label> 
+                <label> 
+                    Identifier:
+                    <textarea @name="textarea" @style="width:250px;height:150px;" @bind-Value="Model!.input""></textarea>
+                </label> 
+                
             </div> 
             <div> 
                 <button type="submit">Submit</button> 
@@ -36,8 +41,6 @@
     }
     else
     {
-        @* var imgsrc = ; *@
-
         <p>@flaxcodeModel.FlaxcodeInputString</p>
 
         <img src="@flaxcodeModel.FlaxcodeBase64" />
