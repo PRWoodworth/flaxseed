@@ -20,12 +20,12 @@
         <form method="post" @onsubmit="Submit" @formname="flaxcode-input-form"> 
             <AntiforgeryToken /> 
             <div> 
-                @* <label> 
+                <label> 
                     Input:
                     <InputText @bind-Value="Model!.input" />
-                </label>  *@
-                <label>Input: </label> 
-                <textarea @name="textarea" @style="width:250px;height:150px;" @bind="Model!.input"></textarea>
+                </label> 
+                @* <label>Input: </label> 
+                <textarea @name="textarea" @style="width:250px;height:150px;" @bind="Model!.input"></textarea> *@
                 
                 
             </div> 
