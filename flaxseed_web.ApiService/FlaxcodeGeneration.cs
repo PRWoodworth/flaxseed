@@ -48,16 +48,8 @@ namespace flaxseed_web.ApiService
         }
 
         public static Image<Rgba32> Generate_Image(List<List<List<string>>> colorized_input)
-        {
-            Console.Out.WriteLine(colorized_input.Count);
-            Console.Out.WriteLine(HelperVariables.Width_basis_public);
-            Console.Out.WriteLine(HelperVariables.CANVAS_WIDTH_PUBLIC);
-            Console.Out.WriteLine(HelperVariables.Height_basis_public);
-            // TODO: why is it duplicating that entire UI element??????? also it doesn't work at all - it doesn't add rows.
-            int canvas_height_alternative = (HelperVariables.CANVAS_WIDTH_PUBLIC / (colorized_input.Count * HelperVariables.Width_basis_public)) * HelperVariables.Height_basis_public;
-            Console.Out.WriteLine(canvas_height_alternative);
-            Console.Out.WriteLine(" ");
-            Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, Math.Max(canvas_height_alternative, HelperVariables.CANVAS_HEIGHT_PUBLIC));
+        {   
+            Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC);
             int word_number = 0;
             int word_height = 0;
             float x_coordinate = 0;
