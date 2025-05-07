@@ -77,7 +77,7 @@ namespace flaxseed_web.ApiService
                 word_number++;
             }
             int total_canvas_height = word_height + HelperVariables.Height_basis_public;
-            image.Mutate(x => x.Resize(HelperVariables.CANVAS_WIDTH_PUBLIC, total_canvas_height))
+            image.Mutate(x => x.Resize(HelperVariables.CANVAS_WIDTH_PUBLIC, total_canvas_height));
             return image;
         }
 
