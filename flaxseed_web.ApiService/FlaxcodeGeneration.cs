@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 
 namespace flaxseed_web.ApiService
 {
@@ -48,7 +49,7 @@ namespace flaxseed_web.ApiService
         }
 
         public static Image<Rgba32> Generate_Image(List<List<List<string>>> colorized_input)
-        {
+        {   
             Image<Rgba32> image = new(HelperVariables.CANVAS_WIDTH_PUBLIC, HelperVariables.CANVAS_HEIGHT_PUBLIC);
             int word_number = 0;
             int word_height = 0;
@@ -71,12 +72,13 @@ namespace flaxseed_web.ApiService
                         largest_x_coordinate = (int)x_coordinate;
                     }
                     image = Generate_Rectangle_Code_For_Letter(image, letter, word_height, x_coordinate);
+                    
                     letter_number++;
                 }
                 word_number++;
             }
-
-            // TODO: trim canvas down to size of the actual output
+            int total_canvas_height = word_height + HelperVariables.Height_basis_public;
+            image.Mutate(x => x.Crop(HelperVariables.CANVAS_WIDTH_PUBLIC, total_canvas_height));
             return image;
         }
 

@@ -40,7 +40,7 @@ public class ColorArrays
         Letter_Colors.Add('C', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_PURPLE, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_PURPLE]);
         Letter_Colors.Add('D', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_ORANGE, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_ORANGE]);
         Letter_Colors.Add('E', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_CYAN, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_CYAN]);
-        Letter_Colors.Add('F', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_PURPLE, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_PURPLE]);
+        Letter_Colors.Add('F', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_PURPLE, HelperVariables.PUBLIC_CONST_BAR, HelperVariables.PUBLIC_CONST_PURPLE]);
         Letter_Colors.Add('G', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_MAGENTA, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_MAGENTA]);
         Letter_Colors.Add('H', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_RED, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_RED]);
         Letter_Colors.Add('I', [HelperVariables.PUBLIC_CONST_LETTER, HelperVariables.PUBLIC_CONST_BLUE, HelperVariables.PUBLIC_CONST_NO_BAR, HelperVariables.PUBLIC_CONST_BLUE]);

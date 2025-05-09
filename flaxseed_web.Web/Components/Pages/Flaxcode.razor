@@ -13,33 +13,36 @@
 </head>
 
 
-<h1>Flaxcode</h1>
+
 <body>
-     <div> 
-         <form method="post" @onsubmit="Submit" @formname="flaxcode-input-form"> 
-             <AntiforgeryToken /> 
-             <div> 
-                 <label> 
-                     Identifier:
+    <h1>Flaxcode</h1>
+    <div> 
+        <form method="post" @onsubmit="Submit" @formname="flaxcode-input-form"> 
+            <AntiforgeryToken /> 
+            <div> 
+                <label> 
+                    Input:
                     <InputText @bind-Value="Model!.input" />
                 </label> 
-             </div> 
-             <div> 
-                 <button type="submit">Submit</button> 
-             </div> 
-         </form> 
-     </div> 
+                @* <label>Input: </label> 
+                <textarea @name="textarea" @style="width:250px;height:150px;" @bind="Model!.input"></textarea> *@
+                
+                
+            </div> 
+            <div> 
+                <button type="submit">Submit</button> 
+            </div> 
+        </form> 
+    </div> 
     @if (flaxcodeModel.FlaxcodeBase64 == null)
     {
         <p><em>Loading...</em></p>
     }
     else
     {
-        var imgsrc = flaxcodeModel.FlaxcodeBase64;
-
         <p>@flaxcodeModel.FlaxcodeInputString</p>
 
-        <img src="@imgsrc" />
+        <img src="@flaxcodeModel.FlaxcodeBase64" />
 
     }
 </body>
